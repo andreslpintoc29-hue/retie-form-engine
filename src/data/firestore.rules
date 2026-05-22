@@ -1,0 +1,224 @@
+// ============================================
+// FIRESTORE SECURITY RULES - PRODUCTION
+// ============================================
+
+rules_version = '2';
+
+service cloud.firestore {
+  // ============================================
+  // HELPER FUNCTIONS
+  // ============================================
+
+  // Check if user is authenticated
+  function isAuthenticated() {
+    return request.auth != null;
+  }
+
+  // Check if user has a specific role
+  function hasRole(role) {
+    return isAuthenticated() && request.auth.token.role == role;
+  }
+
+  // Check if user has any of the specified roles
+  function hasAnyRole(roles) {
+    return isAuthenticated() && roles[request.auth.token.role] == true;
+  }
+
+  // Check if user belongs to the specified tenant
+  function belongsToTenant(tenantId) {
+    return isAuthenticated() && request.auth.token.tenantId == tenantId;
+  }
+
+  // Check if user is the owner of the resource
+  function isOwner(userId) {
+    return isAuthenticated() && request.auth.uid == userId;
+  }
+
+  // Check if user can access the tenant's data
+  function canAccessTenant(tenantId) {
+    return isAuthenticated() && 
+           (request.auth.token.tenantId == tenantId || request.auth.token.role == 'admin');
+  }
+
+  // Validate email format
+  function isValidEmail(email) {
+    return email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+  }
+
+  // ============================================
+  // TENANTS COLLECTION
+  // ============================================
+
+  match /tenants/{tenantId} {
+    // Only admins can read tenant info
+    allow read: if hasAnyRole({admin: true});
+    
+    // Only admins can create/update tenants
+    allow create: if hasAnyRole({admin: true})
+      && request.resource.data.keys().hasAll(['name', 'settings', 'isActive'])
+      && request.resource.data.name is string
+      && request.resource.data.name.size() > 0;
+    
+    allow update: if hasAnyRole({admin: true});
+    
+    // Only admins can delete (soft delete only)
+    allow delete: if false; // No hard deletes
+  }
+
+  // ============================================
+  // USERS COLLECTION
+  // ============================================
+
+  match /users/{userId} {
+    // Users can read their own profile
+    allow read: if isOwner(userId) || hasAnyRole({admin: true, supervisor: true});
+    
+    // Users can update their own profile (limited fields)
+    allow update: if isOwner(userId) 
+      && request.resource.data.diff(resource.data).affectedKeys()
+        .hasOnly(['displayName', 'photoURL', 'phone']);
+    
+    // Admins can create and update any user
+    allow create: if hasAnyRole({admin: true})
+      && request.resource.data.keys().hasAll(['email', 'displayName', 'role', 'tenantId', 'isActive'])
+      && isValidEmail(request.resource.data.email)
+      && request.resource.data.role in ['inspector', 'supervisor', 'admin'];
+    
+    allow update: if hasAnyRole({admin: true})
+      && (request.resource.data.role == resource.data.role || hasAnyRole({admin: true}));
+    
+    // Only admins can delete users
+    allow delete: if hasAnyRole({admin: true});
+  }
+
+  // ============================================
+  // INSPECTIONS COLLECTION
+  // ============================================
+
+  match /inspections/{inspectionId} {
+    // Read: authenticated users in the same tenant
+    allow read: if isAuthenticated() 
+      && canAccessTenant(resource.data.tenantId);
+    
+    // Create: inspectors and supervisors in the same tenant
+    allow create: if isAuthenticated()
+      && canAccessTenant(request.resource.data.tenantId)
+      && hasAnyRole({inspector: true, supervisor: true, admin: true})
+      && request.resource.data.keys().hasAll([
+        'inspectionCode', 'tenantId', 'status', 'siteName', 
+        'inspectorId', 'schemaCode', 'answers', 'createdAt'
+      ])
+      && request.resource.data.status in ['draft']
+      && request.resource.data.inspectorId == request.auth.uid;
+    
+    // Update: owner or supervisor/admin in same tenant
+    allow update: if isAuthenticated()
+      && canAccessTenant(resource.data.tenantId)
+      && (
+        // Owner can update drafts and in_progress
+        (resource.data.inspectorId == request.auth.uid 
+          && resource.data.status in ['draft', 'in_progress'])
+        ||
+        // Supervisors and admins can update anything
+        hasAnyRole({supervisor: true, admin: true})
+      )
+      // Prevent status escalation without proper authorization
+      && (
+        (request.resource.data.status == resource.data.status)
+        ||
+        (hasAnyRole({supervisor: true, admin: true}))
+      );
+    
+    // Delete: only admins can hard delete, supervisors can archive
+    allow delete: if hasAnyRole({admin: true});
+  }
+
+  // ============================================
+  // ATTACHMENTS COLLECTION
+  // ============================================
+
+  match /attachments/{attachmentId} {
+    // Read: authenticated users in same tenant
+    allow read: if isAuthenticated()
+      && canAccessTenant(resource.data.tenantId);
+    
+    // Create: inspectors and supervisors can upload
+    allow create: if isAuthenticated()
+      && canAccessTenant(request.resource.data.tenantId)
+      && hasAnyRole({inspector: true, supervisor: true, admin: true})
+      && request.resource.data.keys().hasAll([
+        'inspectionId', 'type', 'fileName', 'fileSize', 
+        'mimeType', 'storagePath', 'uploadedBy', 'uploadedAt'
+      ])
+      && request.resource.data.type in ['photo', 'video', 'document', 'signature']
+      && request.resource.data.fileSize < 50000000  // 50MB max
+      && request.resource.data.uploadedBy == request.auth.uid;
+    
+    // Delete: owner or supervisor/admin can delete
+    allow delete: if isAuthenticated()
+      && canAccessTenant(resource.data.tenantId)
+      && (
+        resource.data.uploadedBy == request.auth.uid
+        ||
+        hasAnyRole({supervisor: true, admin: true})
+      );
+  }
+
+  // ============================================
+  // AUDIT COLLECTION
+  // ============================================
+
+  match /audit/{auditId} {
+    // Read: only supervisors and admins can read audit logs
+    allow read: if isAuthenticated()
+      && hasAnyRole({supervisor: true, admin: true});
+    
+    // Write: system-only (via Cloud Functions)
+    // No direct writes allowed from client
+    allow create, update, delete: if false;
+  }
+
+  // ============================================
+  // SCHEMAS COLLECTION
+  // ============================================
+
+  match /schemas/{schemaId} {
+    // Read: authenticated users can read active schemas
+    allow read: if isAuthenticated()
+      && canAccessTenant(resource.data.tenantId)
+      && resource.data.status == 'active';
+    
+    // Create: only admins can create schemas
+    allow create: if hasAnyRole({admin: true})
+      && request.resource.data.keys().hasAll(['name', 'code', 'version', 'tenantId', 'schema', 'status'])
+      && request.resource.data.status in ['draft'];
+    
+    // Update: only admins can update schemas
+    allow update: if hasAnyRole({admin: true});
+    
+    // Delete: only admins (soft delete via status change)
+    allow delete: if false;
+  }
+
+  // ============================================
+  // SYNC QUEUE COLLECTION (internal)
+  // ============================================
+
+  match /syncQueue/{operationId} {
+    // Read: only admins
+    allow read: if hasAnyRole({admin: true});
+    
+    // Write: system-only via Cloud Functions
+    allow create, update, delete: if false;
+  }
+
+  // ============================================
+  // VALIDATION RULES
+  // ============================================
+
+  // Prevent writes to system fields
+  function isValidWrite() {
+    return request.resource.data.keys().hasAll(['id'])
+      && !request.resource.data.keys().hasAny(['_createdAt', '_updatedAt', '_computed']);
+  }
+}

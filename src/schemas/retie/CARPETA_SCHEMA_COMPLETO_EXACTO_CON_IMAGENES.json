@@ -1,0 +1,1233 @@
+{
+  "hoja": "CARPETA",
+  "titulo": "LISTA DE CHEQUEO DOCUMENTOS CARPETA",
+  "proceso": "GESTIÓN DE INSPECCIÓN",
+  "codigo": "F-GI-02",
+  "version": "3",
+  "fecha_formato": "15/01/2018",
+  "tipo_principal": "checklist_documental_carpeta",
+  "instruccion_excel": "Coloque X o  ü según la evaluación a cada uno de los ítems",
+  "subinstruccion_excel": "Organizar los documentos en la carpeta de inspección siguiendo el orden dado a continuación",
+  "campos_contexto": [
+    {
+      "id": "codigo_servicio",
+      "label": "Código del servicio:",
+      "tipo": "text",
+      "valor_excel": "R&F-0467-10-20"
+    },
+    {
+      "id": "fecha_inspeccion",
+      "label": "Fecha de la inspección:",
+      "tipo": "date",
+      "valor_excel": "2020-10-29 00:00:00"
+    }
+  ],
+  "recursos_visuales_hoja": [
+    {
+      "id": "carpeta_imagen_1",
+      "tipo": "image",
+      "file": "CARPETA_IMAGEN_1.png",
+      "anchor": {
+        "row": 2,
+        "column": 3
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja CARPETA."
+    }
+  ],
+  "imagenes_embebidas": [
+    {
+      "id": "carpeta_imagen_1",
+      "tipo": "image",
+      "file": "CARPETA_IMAGEN_1.png",
+      "anchor": {
+        "row": 2,
+        "column": 3
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja CARPETA."
+    }
+  ],
+  "respuesta_por_defecto": {
+    "revision_1": {
+      "tipo": "radio",
+      "opciones": [
+        "SI",
+        "NO",
+        "N/A"
+      ]
+    },
+    "cierre": {
+      "tipo": "radio",
+      "opciones": [
+        "SI",
+        "NO"
+      ]
+    }
+  },
+  "secciones": [
+    {
+      "titulo": "Documentos carpeta de inspección",
+      "tipo": "checklist_documental",
+      "descripcion": "Organizar los documentos en la carpeta de inspección siguiendo el orden dado a continuación",
+      "columnas": [
+        {
+          "field": "numero",
+          "label": "Ítem",
+          "tipo": "number"
+        },
+        {
+          "field": "descripcion",
+          "label": "Descripción",
+          "tipo": "text"
+        },
+        {
+          "field": "archivo_digital",
+          "label": "Archivo digital",
+          "tipo": "radio",
+          "opciones": [
+            "SI",
+            "NO"
+          ],
+          "opcional": true
+        },
+        {
+          "field": "revision_1",
+          "label": "Revisión 1 - Cumple",
+          "tipo": "radio",
+          "opciones": [
+            "SI",
+            "NO",
+            "N/A"
+          ]
+        },
+        {
+          "field": "cierre",
+          "label": "Cierre - Cumple",
+          "tipo": "radio",
+          "opciones": [
+            "SI",
+            "NO"
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "CARP-001",
+          "numero": 1,
+          "numero_original_excel": 1,
+          "fila_excel": 14,
+          "descripcion": "Asignación orden de trabajo",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-002",
+          "numero": 2,
+          "numero_original_excel": 2,
+          "fila_excel": 15,
+          "descripcion": "Evaluación del riesgo",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-003",
+          "numero": 3,
+          "numero_original_excel": 3,
+          "fila_excel": 16,
+          "descripcion": "Declaración de cumplimiento del constructor",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-004",
+          "numero": 4,
+          "numero_original_excel": 4,
+          "fila_excel": 17,
+          "descripcion": "Acta de visita",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-005",
+          "numero": 5,
+          "numero_original_excel": 5,
+          "fila_excel": 18,
+          "descripcion": "Copia matricula profesional del constructor eléctrico",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-006",
+          "numero": 6,
+          "numero_original_excel": 6,
+          "fila_excel": 19,
+          "descripcion": "Copia matricula profesional del diseñador eléctrico",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-007",
+          "numero": 7,
+          "numero_original_excel": 7,
+          "fila_excel": 20,
+          "descripcion": "Copia matricula profesional del interventor de la obra eléctrica",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-008",
+          "numero": 8,
+          "numero_original_excel": 8,
+          "fila_excel": 21,
+          "descripcion": "Copia cedula de ciudadanía o NIT del propietario",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-009",
+          "numero": 9,
+          "numero_original_excel": 9,
+          "fila_excel": 22,
+          "descripcion": "Lista de chequeo revisión documental de diseños",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-010",
+          "numero": 10,
+          "numero_original_excel": 10,
+          "fila_excel": 23,
+          "descripcion": "Planos eléctricos según lo construido firmado por el diseñador y constructor",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-011",
+          "numero": 11,
+          "numero_original_excel": 11,
+          "fila_excel": 24,
+          "descripcion": "Memorias de cálculo firmadas por diseñador",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          },
+          "archivo_digital": {
+            "label": "Archivo digital",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "X24",
+              "NO": "AA24"
+            },
+            "texto_si_excel": "Si",
+            "texto_no_excel": "No"
+          }
+        },
+        {
+          "id": "CARP-012",
+          "numero": 12,
+          "numero_original_excel": 12,
+          "fila_excel": 25,
+          "descripcion": "Lista de chequeo uso final residencial",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-013",
+          "numero": 13,
+          "numero_original_excel": 13,
+          "fila_excel": 26,
+          "descripcion": "Lista de chequeo uso final industrial y comercial",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-014",
+          "numero": 14,
+          "numero_original_excel": 14,
+          "fila_excel": 27,
+          "descripcion": "Lista de chequeo alta concentración de personas, sistemas de emergencia y bombas contra incendios",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-015",
+          "numero": 15,
+          "numero_original_excel": 15,
+          "fila_excel": 28,
+          "descripcion": "Lista de chequeo apantallamiento",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-016",
+          "numero": 16,
+          "numero_original_excel": 16,
+          "fila_excel": 29,
+          "descripcion": "Lista de chequeo ascensores",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-017",
+          "numero": 17,
+          "numero_original_excel": 17,
+          "fila_excel": 30,
+          "descripcion": "Lista de chequeo piscinas",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-018",
+          "numero": 18,
+          "numero_original_excel": 18,
+          "fila_excel": 31,
+          "descripcion": "Lista de chequeo distribución",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-019",
+          "numero": 19,
+          "numero_original_excel": 19,
+          "fila_excel": 32,
+          "descripcion": "Lista de chequeo subestación tipo poste",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-020",
+          "numero": 20,
+          "numero_original_excel": 20,
+          "fila_excel": 33,
+          "descripcion": "Lista de chequeo subestación tipo pedestal",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-021",
+          "numero": 21,
+          "numero_original_excel": 21,
+          "fila_excel": 34,
+          "descripcion": "Lista de chequeo subestación tipo interior",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-022",
+          "numero": 22,
+          "numero_original_excel": 22,
+          "fila_excel": 35,
+          "descripcion": "Lista de chequeo subestación tipo patio",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-023",
+          "numero": 23,
+          "numero_original_excel": 23,
+          "fila_excel": 36,
+          "descripcion": "Lista de chequeo certificado de producto",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-024",
+          "numero": 24,
+          "numero_original_excel": 24,
+          "fila_excel": 37,
+          "descripcion": "Medida resistencia de puesta a tierra",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-025",
+          "numero": 25,
+          "numero_original_excel": 25,
+          "fila_excel": 38,
+          "descripcion": "Medida resistencia de aislamiento",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-026",
+          "numero": 26,
+          "numero_original_excel": 26,
+          "fila_excel": 39,
+          "descripcion": "Medida Iluminancia",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-027",
+          "numero": 27,
+          "numero_original_excel": 27,
+          "fila_excel": 40,
+          "descripcion": "Medida tensión de paso y contacto",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-028",
+          "numero": 28,
+          "numero_original_excel": 28,
+          "fila_excel": 41,
+          "descripcion": "Medida de campos electromagnéticos",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-029",
+          "numero": 29,
+          "numero_original_excel": 29,
+          "fila_excel": 42,
+          "descripcion": "Certificados de productos",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "NO"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI"
+          },
+          "archivo_digital": {
+            "label": "Archivo digital",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "X42",
+              "NO": "AA42"
+            },
+            "texto_si_excel": "Si",
+            "texto_no_excel": "No"
+          }
+        },
+        {
+          "id": "CARP-030",
+          "numero": 30,
+          "numero_original_excel": 30,
+          "fila_excel": 44,
+          "descripcion": "Protocolo del transformador",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          },
+          "archivo_digital": {
+            "label": "Archivo digital",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "",
+            "celdas": {
+              "SI": "X44",
+              "NO": "AA44"
+            },
+            "texto_si_excel": "Si",
+            "texto_no_excel": "No"
+          }
+        },
+        {
+          "id": "CARP-031",
+          "numero": 31,
+          "numero_original_excel": 31,
+          "fila_excel": 46,
+          "descripcion": "Registro fotográfico",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-032",
+          "numero": 32,
+          "numero_original_excel": 32,
+          "fila_excel": 47,
+          "descripcion": "Reporte de no conformidades adicionales",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          },
+          "archivo_digital": {
+            "label": "Archivo digital",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "",
+            "celdas": {
+              "SI": "X47",
+              "NO": "AA47"
+            },
+            "texto_si_excel": "Si",
+            "texto_no_excel": "No"
+          }
+        },
+        {
+          "id": "CARP-033",
+          "numero": 33,
+          "numero_original_excel": 33,
+          "fila_excel": 49,
+          "descripcion": "Registro inscripción SIC del constructor",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          },
+          "archivo_digital": {
+            "label": "Archivo digital",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "X49",
+              "NO": "AA49"
+            },
+            "texto_si_excel": "Si",
+            "texto_no_excel": "No"
+          }
+        },
+        {
+          "id": "CARP-034",
+          "numero": 34,
+          "numero_original_excel": 34,
+          "fila_excel": 50,
+          "descripcion": "Dictamen prerrequisito",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "N/A"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Dictamen",
+      "tipo": "grupo_campos",
+      "items": [
+        {
+          "id": "CARP-034_DUP2_DETALLE_DICTAMEN",
+          "numero": 34,
+          "numero_original_excel": 34,
+          "fila_excel": 52,
+          "descripcion": "Dictamen",
+          "tipo": "grupo_campos",
+          "campos": [
+            {
+              "id": "dictamen_subestacion",
+              "label": "Subestación",
+              "tipo": "text",
+              "valor_excel": "N/A"
+            },
+            {
+              "id": "dictamen_distribucion",
+              "label": "Distribución",
+              "tipo": "text_or_number",
+              "valor_excel": "0"
+            },
+            {
+              "id": "dictamen_uso_final",
+              "label": "Uso Final",
+              "tipo": "text_or_number",
+              "valor_excel": "0"
+            }
+          ],
+          "campo_numero_dictamen": {
+            "label": "Número dictamen",
+            "tipo": "text"
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Otros documentos",
+      "tipo": "checklist_documental_subitems",
+      "item_principal": {
+        "id": "CARP-035",
+        "numero": 35,
+        "descripcion": "Otros documentos:",
+        "revision_1": {
+          "tipo": "radio",
+          "opciones": [
+            "SI",
+            "NO",
+            "N/A"
+          ]
+        },
+        "cierre": {
+          "tipo": "radio",
+          "opciones": [
+            "SI",
+            "NO"
+          ]
+        }
+      },
+      "subitems": [
+        {
+          "id": "CARP-OTRO-1",
+          "ordinal_excel": "1.",
+          "fila_excel": 59,
+          "descripcion": "Declaración de cumplimiento de Diseño",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-OTRO-2",
+          "ordinal_excel": "2.",
+          "fila_excel": 60,
+          "descripcion": "Copia Disponibilidad de Servicio",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-OTRO-3",
+          "ordinal_excel": "3.",
+          "fila_excel": 61,
+          "descripcion": "Copia declaracion de diseño",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": "SI"
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-OTRO-4",
+          "ordinal_excel": "4.",
+          "fila_excel": 62,
+          "descripcion": "",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": ""
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        },
+        {
+          "id": "CARP-OTRO-5",
+          "ordinal_excel": "5.",
+          "fila_excel": 63,
+          "descripcion": "",
+          "revision_1": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO",
+              "N/A"
+            ],
+            "valor_excel": ""
+          },
+          "cierre": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": ""
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Observaciones",
+      "tipo": "textarea",
+      "campo": {
+        "id": "observaciones",
+        "label": "Observaciones:",
+        "tipo": "textarea"
+      }
+    },
+    {
+      "titulo": "Carpeta cerrada y verificada, En constancia firma:",
+      "tipo": "firmas",
+      "campos": [
+        {
+          "id": "firma_ingeniero_inspector",
+          "label": "Ingeniero Inspector",
+          "tipo": "signature_or_text",
+          "valor_excel": "[REDACTADO_NOMBRE_EN_EXCEL]"
+        },
+        {
+          "id": "firma_director_tecnico",
+          "label": "Director Técnico",
+          "tipo": "signature_or_text",
+          "valor_excel": "[REDACTADO_NOMBRE_EN_EXCEL]"
+        }
+      ],
+      "nota_privacidad": "Los nombres visibles en la hoja fueron omitidos del schema exportado; la interfaz debe capturar firmas/nombres como datos de la inspección, no hardcodearlos."
+    }
+  ],
+  "validacion_extraccion": {
+    "imagenes_extraidas": 1,
+    "items_documentales_extraidos": 34,
+    "incluye_dictamen_detalle": true,
+    "otros_documentos_extraidos": 5,
+    "numeros_duplicados_original_excel": [
+      34
+    ],
+    "nota": "La hoja contiene el número 34 en Dictamen prerrequisito and también en Dictamen; se conserva como duplicado con id único. Los nombres de firmas se redactaron por privacidad.",
+    "estado": "OK"
+  }
+}

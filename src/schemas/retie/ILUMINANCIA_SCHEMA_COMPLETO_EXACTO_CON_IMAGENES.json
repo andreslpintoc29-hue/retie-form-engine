@@ -1,0 +1,1787 @@
+{
+  "hoja": "ILUMINANCIA",
+  "hojas_excel_origen": [
+    "ILUMINANCIA",
+    "ILUMINANCIA (2)",
+    "ILUMINANCIA (3)",
+    "ILUMINANCIA (4)"
+  ],
+  "titulo": "MEDIDA ILUMINANCIA",
+  "proceso": "GESTION DE INSPECCION",
+  "codigo": "F-GI-19",
+  "version": "1",
+  "fecha_formato": "01/02/2018",
+  "tipo_principal": "formulario_medicion_iluminancia_multihoja",
+  "descripcion_tipo_respuesta": "Formulario técnico de medición de iluminancia. Integra ILUMINANCIA, ILUMINANCIA (2), ILUMINANCIA (3) e ILUMINANCIA (4). Cada fila tiene sitio, Medida 1, Medida 2, Medida 3, Promedio calculado y Cumple SI/NO.",
+  "regla_calculo_promedio": {
+    "campo": "promedio_lux",
+    "tipo": "computed",
+    "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+    "comportamiento": "Recalcular automáticamente cuando cambie medida_1_lux, medida_2_lux o medida_3_lux. Si falta algún valor numérico, dejar promedio vacío para evitar NaN."
+  },
+  "recursos_visuales_hoja": [
+    {
+      "id": "iluminancia_p1_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA."
+    },
+    {
+      "id": "iluminancia_p2_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_2_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA (2)",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (2)."
+    },
+    {
+      "id": "iluminancia_p3_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_3_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA (3)",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (3)."
+    },
+    {
+      "id": "iluminancia_p4_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_4_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA (4)",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (4)."
+    }
+  ],
+  "imagenes_embebidas": [
+    {
+      "id": "iluminancia_p1_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA."
+    },
+    {
+      "id": "iluminancia_p1_imagen_2",
+      "tipo": "image",
+      "file": "ILUMINANCIA_IMAGEN_2.png",
+      "sheet": "ILUMINANCIA",
+      "anchor": {
+        "row": 9,
+        "column": 2
+      },
+      "width": 577,
+      "height": 316,
+      "format": "png",
+      "rol": "recurso_visual_instrucciones_medicion",
+      "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA."
+    },
+    {
+      "id": "iluminancia_p1_imagen_3",
+      "tipo": "image",
+      "file": "ILUMINANCIA_IMAGEN_3.png",
+      "sheet": "ILUMINANCIA",
+      "anchor": {
+        "row": 9,
+        "column": 21
+      },
+      "width": 175,
+      "height": 160,
+      "format": "png",
+      "rol": "recurso_visual_equipo_luxometro",
+      "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA."
+    },
+    {
+      "id": "iluminancia_p2_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_2_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA (2)",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (2)."
+    },
+    {
+      "id": "iluminancia_p2_imagen_2",
+      "tipo": "image",
+      "file": "ILUMINANCIA_2_IMAGEN_2.png",
+      "sheet": "ILUMINANCIA (2)",
+      "anchor": {
+        "row": 9,
+        "column": 2
+      },
+      "width": 577,
+      "height": 316,
+      "format": "png",
+      "rol": "recurso_visual_instrucciones_medicion",
+      "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA (2)."
+    },
+    {
+      "id": "iluminancia_p2_imagen_3",
+      "tipo": "image",
+      "file": "ILUMINANCIA_2_IMAGEN_3.png",
+      "sheet": "ILUMINANCIA (2)",
+      "anchor": {
+        "row": 9,
+        "column": 21
+      },
+      "width": 175,
+      "height": 160,
+      "format": "png",
+      "rol": "recurso_visual_equipo_luxometro",
+      "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA (2)."
+    },
+    {
+      "id": "iluminancia_p3_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_3_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA (3)",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (3)."
+    },
+    {
+      "id": "iluminancia_p3_imagen_2",
+      "tipo": "image",
+      "file": "ILUMINANCIA_3_IMAGEN_2.png",
+      "sheet": "ILUMINANCIA (3)",
+      "anchor": {
+        "row": 9,
+        "column": 2
+      },
+      "width": 577,
+      "height": 316,
+      "format": "png",
+      "rol": "recurso_visual_instrucciones_medicion",
+      "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA (3)."
+    },
+    {
+      "id": "iluminancia_p3_imagen_3",
+      "tipo": "image",
+      "file": "ILUMINANCIA_3_IMAGEN_3.png",
+      "sheet": "ILUMINANCIA (3)",
+      "anchor": {
+        "row": 9,
+        "column": 21
+      },
+      "width": 175,
+      "height": 160,
+      "format": "png",
+      "rol": "recurso_visual_equipo_luxometro",
+      "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA (3)."
+    },
+    {
+      "id": "iluminancia_p4_imagen_1",
+      "tipo": "image",
+      "file": "ILUMINANCIA_4_IMAGEN_1.png",
+      "sheet": "ILUMINANCIA (4)",
+      "anchor": {
+        "row": 2,
+        "column": 4
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (4)."
+    },
+    {
+      "id": "iluminancia_p4_imagen_2",
+      "tipo": "image",
+      "file": "ILUMINANCIA_4_IMAGEN_2.png",
+      "sheet": "ILUMINANCIA (4)",
+      "anchor": {
+        "row": 9,
+        "column": 2
+      },
+      "width": 577,
+      "height": 316,
+      "format": "png",
+      "rol": "recurso_visual_instrucciones_medicion",
+      "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA (4)."
+    },
+    {
+      "id": "iluminancia_p4_imagen_3",
+      "tipo": "image",
+      "file": "ILUMINANCIA_4_IMAGEN_3.png",
+      "sheet": "ILUMINANCIA (4)",
+      "anchor": {
+        "row": 9,
+        "column": 21
+      },
+      "width": 175,
+      "height": 160,
+      "format": "png",
+      "rol": "recurso_visual_equipo_luxometro",
+      "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA (4)."
+    }
+  ],
+  "total_paginas_excel": 4,
+  "total_filas_medicion_extraidas": 16,
+  "secciones": [
+    {
+      "titulo": "ILUMINANCIA",
+      "tipo": "pagina_medicion_iluminancia",
+      "pagina": 1,
+      "campos_contexto": {
+        "codigo_servicio": {
+          "label": "Código servicio",
+          "tipo": "text",
+          "valor_excel": "R&F-0467-10-20"
+        },
+        "fecha_inspeccion": {
+          "label": "Fecha de la inspeccion",
+          "tipo": "date",
+          "valor_excel": "2020-10-29 00:00:00"
+        },
+        "codigo_equipo": {
+          "label": "Código del equipo",
+          "tipo": "text",
+          "valor_excel": "R&F-EL200-008"
+        }
+      },
+      "instrucciones": {
+        "tipo": "textarea_readonly",
+        "texto": "* Dividir el espacio de trabajo en 3 recuadros iguales.\n* En el centro de cada uno de los recuadros ubicar el luxómetro.\n* El luxómetro se debe ubicar a una altura de 0,85 m sobre el nivel del piso.\n* Tomar la medida en cada uno de los recuadros.",
+        "recursos_visuales": [
+          {
+            "id": "iluminancia_p1_imagen_2",
+            "tipo": "image",
+            "file": "ILUMINANCIA_IMAGEN_2.png",
+            "sheet": "ILUMINANCIA",
+            "anchor": {
+              "row": 9,
+              "column": 2
+            },
+            "width": 577,
+            "height": 316,
+            "format": "png",
+            "rol": "recurso_visual_instrucciones_medicion",
+            "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA."
+          },
+          {
+            "id": "iluminancia_p1_imagen_3",
+            "tipo": "image",
+            "file": "ILUMINANCIA_IMAGEN_3.png",
+            "sheet": "ILUMINANCIA",
+            "anchor": {
+              "row": 9,
+              "column": 21
+            },
+            "width": 175,
+            "height": 160,
+            "format": "png",
+            "rol": "recurso_visual_equipo_luxometro",
+            "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA."
+          }
+        ]
+      },
+      "recursos_visuales_hoja": [
+        {
+          "id": "iluminancia_p1_imagen_1",
+          "tipo": "image",
+          "file": "ILUMINANCIA_IMAGEN_1.png",
+          "sheet": "ILUMINANCIA",
+          "anchor": {
+            "row": 2,
+            "column": 4
+          },
+          "width": 373,
+          "height": 170,
+          "format": "png",
+          "rol": "encabezado_pagina",
+          "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA."
+        }
+      ],
+      "tabla_valores_medidos": {
+        "titulo": "Valores medidos",
+        "tipo": "dynamic-table",
+        "descripcion": "Medición de iluminancia. El promedio se calcula automáticamente con medida_1, medida_2 y medida_3.",
+        "columnas": [
+          {
+            "field": "sitio_principal",
+            "label": "Medida realizada en / Sitio",
+            "tipo": "text"
+          },
+          {
+            "field": "medida_1_lux",
+            "label": "Medida 1",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_2_lux",
+            "label": "Medida 2",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_3_lux",
+            "label": "Medida 3",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "promedio_lux",
+            "label": "Promedio",
+            "tipo": "computed",
+            "unit": "Lux",
+            "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3"
+          },
+          {
+            "field": "cumple",
+            "label": "Cumple",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ]
+          }
+        ],
+        "filas": [
+          {
+            "id": "ILUM-P1-MED-01",
+            "pagina_origen": "ILUMINANCIA",
+            "fila_valor_excel": 23,
+            "fila_lugar_excel": 24,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Frente a Apto 101"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Frente a Apto 101"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 12.34
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.113333333333333,
+              "valor_calculado_desde_excel": 4.113333333333333
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P1-MED-02",
+            "pagina_origen": "ILUMINANCIA",
+            "fila_valor_excel": 25,
+            "fila_lugar_excel": 26,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "frente a Apto 102"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "frente a Apto 102"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 13.32
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.44,
+              "valor_calculado_desde_excel": 4.44
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P1-MED-03",
+            "pagina_origen": "ILUMINANCIA",
+            "fila_valor_excel": 27,
+            "fila_lugar_excel": 28,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Escaleras piso 1-2"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Escaleras piso 1-2"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 8.39
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 2.796666666666667,
+              "valor_calculado_desde_excel": 2.796666666666667
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P1-MED-04",
+            "pagina_origen": "ILUMINANCIA",
+            "fila_valor_excel": 29,
+            "fila_lugar_excel": 30,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 201 y 202"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 201 y 202"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 14.36
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.786666666666666,
+              "valor_calculado_desde_excel": 4.786666666666666
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P1-MED-05",
+            "pagina_origen": "ILUMINANCIA",
+            "fila_valor_excel": 31,
+            "fila_lugar_excel": 32,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 203 y 204"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 203 y 204"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 14.81
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.9366666666666665,
+              "valor_calculado_desde_excel": 4.9366666666666665
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          }
+        ]
+      },
+      "observaciones": {
+        "titulo": "Observaciones",
+        "tipo": "textarea",
+        "campo": {
+          "id": "observaciones_pagina_1",
+          "label": "Observaciones",
+          "tipo": "textarea"
+        }
+      }
+    },
+    {
+      "titulo": "ILUMINANCIA (2)",
+      "tipo": "pagina_medicion_iluminancia",
+      "pagina": 2,
+      "campos_contexto": {
+        "codigo_servicio": {
+          "label": "Código servicio",
+          "tipo": "text",
+          "valor_excel": "R&F-0467-10-20"
+        },
+        "fecha_inspeccion": {
+          "label": "Fecha de la inspeccion",
+          "tipo": "date",
+          "valor_excel": "2020-10-29 00:00:00"
+        },
+        "codigo_equipo": {
+          "label": "Código del equipo",
+          "tipo": "text",
+          "valor_excel": "R&F-EL200-008"
+        }
+      },
+      "instrucciones": {
+        "tipo": "textarea_readonly",
+        "texto": "* Dividir el espacio de trabajo en 3 recuadros iguales.\n* En el centro de cada uno de los recuadros ubicar el luxómetro.\n* El luxómetro se debe ubicar a una altura de 0,85 m sobre el nivel del piso.\n* Tomar la medida en cada uno de los recuadros.",
+        "recursos_visuales": [
+          {
+            "id": "iluminancia_p2_imagen_2",
+            "tipo": "image",
+            "file": "ILUMINANCIA_2_IMAGEN_2.png",
+            "sheet": "ILUMINANCIA (2)",
+            "anchor": {
+              "row": 9,
+              "column": 2
+            },
+            "width": 577,
+            "height": 316,
+            "format": "png",
+            "rol": "recurso_visual_instrucciones_medicion",
+            "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA (2)."
+          },
+          {
+            "id": "iluminancia_p2_imagen_3",
+            "tipo": "image",
+            "file": "ILUMINANCIA_2_IMAGEN_3.png",
+            "sheet": "ILUMINANCIA (2)",
+            "anchor": {
+              "row": 9,
+              "column": 21
+            },
+            "width": 175,
+            "height": 160,
+            "format": "png",
+            "rol": "recurso_visual_equipo_luxometro",
+            "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA (2)."
+          }
+        ]
+      },
+      "recursos_visuales_hoja": [
+        {
+          "id": "iluminancia_p2_imagen_1",
+          "tipo": "image",
+          "file": "ILUMINANCIA_2_IMAGEN_1.png",
+          "sheet": "ILUMINANCIA (2)",
+          "anchor": {
+            "row": 2,
+            "column": 4
+          },
+          "width": 373,
+          "height": 170,
+          "format": "png",
+          "rol": "encabezado_pagina",
+          "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (2)."
+        }
+      ],
+      "tabla_valores_medidos": {
+        "titulo": "Valores medidos",
+        "tipo": "dynamic-table",
+        "descripcion": "Medición de iluminancia. El promedio se calcula automáticamente con medida_1, medida_2 y medida_3.",
+        "columnas": [
+          {
+            "field": "sitio_principal",
+            "label": "Medida realizada en / Sitio",
+            "tipo": "text"
+          },
+          {
+            "field": "medida_1_lux",
+            "label": "Medida 1",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_2_lux",
+            "label": "Medida 2",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_3_lux",
+            "label": "Medida 3",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "promedio_lux",
+            "label": "Promedio",
+            "tipo": "computed",
+            "unit": "Lux",
+            "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3"
+          },
+          {
+            "field": "cumple",
+            "label": "Cumple",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ]
+          }
+        ],
+        "filas": [
+          {
+            "id": "ILUM-P2-MED-01",
+            "pagina_origen": "ILUMINANCIA (2)",
+            "fila_valor_excel": 23,
+            "fila_lugar_excel": 24,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Escaleras piso 2-3"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Escaleras piso 2-3"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 10.23
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 3.41,
+              "valor_calculado_desde_excel": 3.41
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P2-MED-02",
+            "pagina_origen": "ILUMINANCIA (2)",
+            "fila_valor_excel": 25,
+            "fila_lugar_excel": 26,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 301 y 302"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 301 y 302"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 13.31
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.4366666666666665,
+              "valor_calculado_desde_excel": 4.4366666666666665
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P2-MED-03",
+            "pagina_origen": "ILUMINANCIA (2)",
+            "fila_valor_excel": 27,
+            "fila_lugar_excel": 28,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 303 y 304"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 303 y 304"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 12.36
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.12,
+              "valor_calculado_desde_excel": 4.12
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P2-MED-04",
+            "pagina_origen": "ILUMINANCIA (2)",
+            "fila_valor_excel": 29,
+            "fila_lugar_excel": 30,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Escaleras piso 3 - 4"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Escaleras piso 3 - 4"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 8.27
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 2.7566666666666664,
+              "valor_calculado_desde_excel": 2.7566666666666664
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P2-MED-05",
+            "pagina_origen": "ILUMINANCIA (2)",
+            "fila_valor_excel": 31,
+            "fila_lugar_excel": 32,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 401 y 402"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 401 y 402"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 12.57
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.19,
+              "valor_calculado_desde_excel": 4.19
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          }
+        ]
+      },
+      "observaciones": {
+        "titulo": "Observaciones",
+        "tipo": "textarea",
+        "campo": {
+          "id": "observaciones_pagina_2",
+          "label": "Observaciones",
+          "tipo": "textarea"
+        }
+      }
+    },
+    {
+      "titulo": "ILUMINANCIA (3)",
+      "tipo": "pagina_medicion_iluminancia",
+      "pagina": 3,
+      "campos_contexto": {
+        "codigo_servicio": {
+          "label": "Código servicio",
+          "tipo": "text",
+          "valor_excel": "R&F-0467-10-20"
+        },
+        "fecha_inspeccion": {
+          "label": "Fecha de la inspeccion",
+          "tipo": "date",
+          "valor_excel": "2020-10-29 00:00:00"
+        },
+        "codigo_equipo": {
+          "label": "Código del equipo",
+          "tipo": "text",
+          "valor_excel": "R&F-EL200-008"
+        }
+      },
+      "instrucciones": {
+        "tipo": "textarea_readonly",
+        "texto": "* Dividir el espacio de trabajo en 3 recuadros iguales.\n* En el centro de cada uno de los recuadros ubicar el luxómetro.\n* El luxómetro se debe ubicar a una altura de 0,85 m sobre el nivel del piso.\n* Tomar la medida en cada uno de los recuadros.",
+        "recursos_visuales": [
+          {
+            "id": "iluminancia_p3_imagen_2",
+            "tipo": "image",
+            "file": "ILUMINANCIA_3_IMAGEN_2.png",
+            "sheet": "ILUMINANCIA (3)",
+            "anchor": {
+              "row": 9,
+              "column": 2
+            },
+            "width": 577,
+            "height": 316,
+            "format": "png",
+            "rol": "recurso_visual_instrucciones_medicion",
+            "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA (3)."
+          },
+          {
+            "id": "iluminancia_p3_imagen_3",
+            "tipo": "image",
+            "file": "ILUMINANCIA_3_IMAGEN_3.png",
+            "sheet": "ILUMINANCIA (3)",
+            "anchor": {
+              "row": 9,
+              "column": 21
+            },
+            "width": 175,
+            "height": 160,
+            "format": "png",
+            "rol": "recurso_visual_equipo_luxometro",
+            "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA (3)."
+          }
+        ]
+      },
+      "recursos_visuales_hoja": [
+        {
+          "id": "iluminancia_p3_imagen_1",
+          "tipo": "image",
+          "file": "ILUMINANCIA_3_IMAGEN_1.png",
+          "sheet": "ILUMINANCIA (3)",
+          "anchor": {
+            "row": 2,
+            "column": 4
+          },
+          "width": 373,
+          "height": 170,
+          "format": "png",
+          "rol": "encabezado_pagina",
+          "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (3)."
+        }
+      ],
+      "tabla_valores_medidos": {
+        "titulo": "Valores medidos",
+        "tipo": "dynamic-table",
+        "descripcion": "Medición de iluminancia. El promedio se calcula automáticamente con medida_1, medida_2 y medida_3.",
+        "columnas": [
+          {
+            "field": "sitio_principal",
+            "label": "Medida realizada en / Sitio",
+            "tipo": "text"
+          },
+          {
+            "field": "medida_1_lux",
+            "label": "Medida 1",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_2_lux",
+            "label": "Medida 2",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_3_lux",
+            "label": "Medida 3",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "promedio_lux",
+            "label": "Promedio",
+            "tipo": "computed",
+            "unit": "Lux",
+            "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3"
+          },
+          {
+            "field": "cumple",
+            "label": "Cumple",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ]
+          }
+        ],
+        "filas": [
+          {
+            "id": "ILUM-P3-MED-01",
+            "pagina_origen": "ILUMINANCIA (3)",
+            "fila_valor_excel": 23,
+            "fila_lugar_excel": 24,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 403 y 404"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 403 y 404"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 15.93
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 5.31,
+              "valor_calculado_desde_excel": 5.31
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P3-MED-02",
+            "pagina_origen": "ILUMINANCIA (3)",
+            "fila_valor_excel": 25,
+            "fila_lugar_excel": 26,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Escaleras piso 4 - 5"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Escaleras piso 4 - 5"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 12.25
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.083333333333333,
+              "valor_calculado_desde_excel": 4.083333333333333
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P3-MED-03",
+            "pagina_origen": "ILUMINANCIA (3)",
+            "fila_valor_excel": 27,
+            "fila_lugar_excel": 28,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 501 y 502"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 501 y 502"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 11.82
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 3.94,
+              "valor_calculado_desde_excel": 3.94
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P3-MED-04",
+            "pagina_origen": "ILUMINANCIA (3)",
+            "fila_valor_excel": 29,
+            "fila_lugar_excel": 30,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 503 y 504"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 503 y 504"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 12.14
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 4.046666666666667,
+              "valor_calculado_desde_excel": 4.046666666666667
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          },
+          {
+            "id": "ILUM-P3-MED-05",
+            "pagina_origen": "ILUMINANCIA (3)",
+            "fila_valor_excel": 31,
+            "fila_lugar_excel": 32,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Escaleras piso 5 - 6"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Escaleras piso 5 - 6"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 7.32
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 2.44,
+              "valor_calculado_desde_excel": 2.44
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          }
+        ]
+      },
+      "observaciones": {
+        "titulo": "Observaciones",
+        "tipo": "textarea",
+        "campo": {
+          "id": "observaciones_pagina_3",
+          "label": "Observaciones",
+          "tipo": "textarea"
+        }
+      }
+    },
+    {
+      "titulo": "ILUMINANCIA (4)",
+      "tipo": "pagina_medicion_iluminancia",
+      "pagina": 4,
+      "campos_contexto": {
+        "codigo_servicio": {
+          "label": "Código servicio",
+          "tipo": "text",
+          "valor_excel": "R&F-0467-10-20"
+        },
+        "fecha_inspeccion": {
+          "label": "Fecha de la inspeccion",
+          "tipo": "date",
+          "valor_excel": "2020-10-29 00:00:00"
+        },
+        "codigo_equipo": {
+          "label": "Código del equipo",
+          "tipo": "text",
+          "valor_excel": "R&F-EL200-008"
+        }
+      },
+      "instrucciones": {
+        "tipo": "textarea_readonly",
+        "texto": "* Dividir el espacio de trabajo en 3 recuadros iguales.\n* En el centro de cada uno de los recuadros ubicar el luxómetro.\n* El luxómetro se debe ubicar a una altura de 0,85 m sobre el nivel del piso.\n* Tomar la medida en cada uno de los recuadros.",
+        "recursos_visuales": [
+          {
+            "id": "iluminancia_p4_imagen_2",
+            "tipo": "image",
+            "file": "ILUMINANCIA_4_IMAGEN_2.png",
+            "sheet": "ILUMINANCIA (4)",
+            "anchor": {
+              "row": 9,
+              "column": 2
+            },
+            "width": 577,
+            "height": 316,
+            "format": "png",
+            "rol": "recurso_visual_instrucciones_medicion",
+            "descripcion": "Imagen/diagrama de instrucciones de medición de iluminancia de la hoja ILUMINANCIA (4)."
+          },
+          {
+            "id": "iluminancia_p4_imagen_3",
+            "tipo": "image",
+            "file": "ILUMINANCIA_4_IMAGEN_3.png",
+            "sheet": "ILUMINANCIA (4)",
+            "anchor": {
+              "row": 9,
+              "column": 21
+            },
+            "width": 175,
+            "height": 160,
+            "format": "png",
+            "rol": "recurso_visual_equipo_luxometro",
+            "descripcion": "Imagen/equipo asociado a medición de iluminancia de la hoja ILUMINANCIA (4)."
+          }
+        ]
+      },
+      "recursos_visuales_hoja": [
+        {
+          "id": "iluminancia_p4_imagen_1",
+          "tipo": "image",
+          "file": "ILUMINANCIA_4_IMAGEN_1.png",
+          "sheet": "ILUMINANCIA (4)",
+          "anchor": {
+            "row": 2,
+            "column": 4
+          },
+          "width": 373,
+          "height": 170,
+          "format": "png",
+          "rol": "encabezado_pagina",
+          "descripcion": "Imagen de encabezado de página de la hoja ILUMINANCIA (4)."
+        }
+      ],
+      "tabla_valores_medidos": {
+        "titulo": "Valores medidos",
+        "tipo": "dynamic-table",
+        "descripcion": "Medición de iluminancia. El promedio se calcula automáticamente con medida_1, medida_2 y medida_3.",
+        "columnas": [
+          {
+            "field": "sitio_principal",
+            "label": "Medida realizada en / Sitio",
+            "tipo": "text"
+          },
+          {
+            "field": "medida_1_lux",
+            "label": "Medida 1",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_2_lux",
+            "label": "Medida 2",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "medida_3_lux",
+            "label": "Medida 3",
+            "tipo": "number",
+            "unit": "Lux"
+          },
+          {
+            "field": "promedio_lux",
+            "label": "Promedio",
+            "tipo": "computed",
+            "unit": "Lux",
+            "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3"
+          },
+          {
+            "field": "cumple",
+            "label": "Cumple",
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ]
+          }
+        ],
+        "filas": [
+          {
+            "id": "ILUM-P4-MED-01",
+            "pagina_origen": "ILUMINANCIA (4)",
+            "fila_valor_excel": 23,
+            "fila_lugar_excel": 24,
+            "sitio_principal": {
+              "label": "Medida realizada en / Sitio",
+              "tipo": "text",
+              "valor_excel": "Entre Aptos 601 y 602"
+            },
+            "lugares_por_medida": {
+              "medida_1": {
+                "tipo": "text",
+                "valor_excel": "Entre Aptos 601 y 602"
+              },
+              "medida_2": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              },
+              "medida_3": {
+                "tipo": "text",
+                "valor_excel": "N/A"
+              }
+            },
+            "medida_1_lux": {
+              "label": "Medida 1",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 8.11
+            },
+            "medida_2_lux": {
+              "label": "Medida 2",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "medida_3_lux": {
+              "label": "Medida 3",
+              "tipo": "number",
+              "unit": "Lux",
+              "valor_excel": 0
+            },
+            "promedio_lux": {
+              "label": "Promedio",
+              "tipo": "computed",
+              "unit": "Lux",
+              "formula": "(medida_1_lux + medida_2_lux + medida_3_lux) / 3",
+              "valor_excel": 2.703333333333333,
+              "valor_calculado_desde_excel": 2.703333333333333
+            },
+            "cumple": {
+              "label": "Cumple",
+              "tipo": "radio",
+              "opciones": [
+                "SI",
+                "NO"
+              ],
+              "valor_excel": "SI"
+            },
+            "es_fila_plantilla": false
+          }
+        ]
+      },
+      "observaciones": {
+        "titulo": "Observaciones",
+        "tipo": "textarea",
+        "campo": {
+          "id": "observaciones_pagina_4",
+          "label": "Observaciones",
+          "tipo": "textarea"
+        }
+      }
+    }
+  ],
+  "validacion_extraccion": {
+    "hojas_revisadas": [
+      "ILUMINANCIA",
+      "ILUMINANCIA (2)",
+      "ILUMINANCIA (3)",
+      "ILUMINANCIA (4)"
+    ],
+    "imagenes_extraidas": 12,
+    "filas_medicion_extraidas_total": 16,
+    "filas_con_datos_reales": 16,
+    "filas_plantilla_extraidas": 0,
+    "estado": "OK"
+  }
+}

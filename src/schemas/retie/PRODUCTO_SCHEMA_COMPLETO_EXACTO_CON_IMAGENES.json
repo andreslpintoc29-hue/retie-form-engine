@@ -1,0 +1,6683 @@
+{
+  "hoja": "PRODUCTO",
+  "titulo": "LISTA DE CHEQUEO CERTIFICADO DE PRODUCTO",
+  "proceso": "GESTIÓN DE INSPECCIÓN",
+  "codigo": "F-GI-16",
+  "version": "2",
+  "fecha_formato": "08/08/2018",
+  "tipo_principal": "formulario_certificados_producto",
+  "descripcion_tipo_respuesta": "Esta hoja no es un checklist simple. Cada ítem tiene Aplica (SI/NO), hasta 4 marcas, organismo certificador, número de certificado y Cumple (SI/NO) por marca.",
+  "campos_contexto": [
+    {
+      "id": "codigo_servicio",
+      "label": "Código servicio",
+      "tipo": "text"
+    },
+    {
+      "id": "fecha_inspeccion",
+      "label": "Fecha de la inspección",
+      "tipo": "date"
+    },
+    {
+      "id": "fecha_cierre_no_conformidades",
+      "label": "Fecha de cierre no conformidades",
+      "tipo": "date_or_text"
+    }
+  ],
+  "recursos_visuales_hoja": [
+    {
+      "id": "producto_imagen_1",
+      "tipo": "image",
+      "file": "PRODUCTO_IMAGEN_1.png",
+      "anchor": {
+        "row": 90,
+        "column": 5
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja PRODUCTO."
+    },
+    {
+      "id": "producto_imagen_2",
+      "tipo": "image",
+      "file": "PRODUCTO_IMAGEN_2.png",
+      "anchor": {
+        "row": 2,
+        "column": 5
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja PRODUCTO."
+    }
+  ],
+  "imagenes_embebidas": [
+    {
+      "id": "producto_imagen_1",
+      "tipo": "image",
+      "file": "PRODUCTO_IMAGEN_1.png",
+      "anchor": {
+        "row": 90,
+        "column": 5
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja PRODUCTO."
+    },
+    {
+      "id": "producto_imagen_2",
+      "tipo": "image",
+      "file": "PRODUCTO_IMAGEN_2.png",
+      "anchor": {
+        "row": 2,
+        "column": 5
+      },
+      "width": 373,
+      "height": 170,
+      "format": "png",
+      "rol": "encabezado_pagina",
+      "descripcion": "Imagen de encabezado de página de la hoja PRODUCTO."
+    }
+  ],
+  "estructura_respuesta_por_item": {
+    "aplica": {
+      "tipo": "radio",
+      "opciones": [
+        "SI",
+        "NO"
+      ]
+    },
+    "marca_1_a_4": {
+      "marca": {
+        "tipo": "text"
+      },
+      "organismo_que_certifica": {
+        "tipo": "text"
+      },
+      "numero_certificado": {
+        "tipo": "text"
+      },
+      "cumple": {
+        "tipo": "radio",
+        "opciones": [
+          "SI",
+          "NO"
+        ]
+      }
+    }
+  },
+  "total_items_excel": 54,
+  "total_numeros_cubiertos": 55,
+  "secciones": [
+    {
+      "titulo": "Certificados de productos",
+      "rango": "Ítem 1-55",
+      "total_items_excel": 54,
+      "total_numeros_cubiertos": 55,
+      "items": [
+        {
+          "id": "PROD-001",
+          "item_excel": "Ítem 1",
+          "numeros_cubiertos": [
+            1
+          ],
+          "fila_excel": 9,
+          "descripcion_producto": "Aisladores eléctricos de vidrio, cerámica y otros materiales",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I9",
+              "NO": "K9"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-002",
+          "item_excel": "Ítem 2",
+          "numeros_cubiertos": [
+            2
+          ],
+          "fila_excel": 12,
+          "descripcion_producto": "Alambres de aluminio o de cobre, aislados o sin aislar, para uso eléctrico.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I12",
+              "NO": "K12"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "NEXANS",
+                "label_original_excel": "Marca 1: NEXANS"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 14,
+                  "organismo_que_certifica": "CIDET",
+                  "numero_certificado": "01864",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": ""
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-003",
+          "item_excel": "Ítem 3",
+          "numeros_cubiertos": [
+            3
+          ],
+          "fila_excel": 15,
+          "descripcion_producto": "Bandejas portacables para uso eléctrico.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I15",
+              "NO": "K15"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-004",
+          "item_excel": "Ítem 4",
+          "numeros_cubiertos": [
+            4
+          ],
+          "fila_excel": 18,
+          "descripcion_producto": "Cables de aluminio, cobre u otras aleaciones, aislados o sin aislar, para uso eléctrico.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I18",
+              "NO": "K18"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "NEXANS",
+                "label_original_excel": "Marca 1: NEXANS"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 20,
+                  "organismo_que_certifica": "CIDET",
+                  "numero_certificado": "01864",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-005",
+          "item_excel": "Ítem 5",
+          "numeros_cubiertos": [
+            5
+          ],
+          "fila_excel": 21,
+          "descripcion_producto": "Cables de aluminio con alma de acero, para uso eléctrico.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I21",
+              "NO": "K21"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-006",
+          "item_excel": "Ítem 6",
+          "numeros_cubiertos": [
+            6
+          ],
+          "fila_excel": 24,
+          "descripcion_producto": "Cables de acero galvanizado, (cables de guarda, templetes, cable puesta a tierra).",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I24",
+              "NO": "K24"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-007",
+          "item_excel": "Ítem 7",
+          "numeros_cubiertos": [
+            7
+          ],
+          "fila_excel": 27,
+          "descripcion_producto": "Cajas de conexión de circuitos eléctricos y conduletas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I27",
+              "NO": "K27"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "PROELECTRICOS",
+                "label_original_excel": "Marca 1: PROELECTRICOS"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 29,
+                  "organismo_que_certifica": "CIDET",
+                  "numero_certificado": "04656",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-008",
+          "item_excel": "Ítem 8",
+          "numeros_cubiertos": [
+            8
+          ],
+          "fila_excel": 30,
+          "descripcion_producto": "Canalizaciones y canaletas metálicas y no metálicas para uso eléctrico.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I30",
+              "NO": "K30"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-009",
+          "item_excel": "Ítem 9",
+          "numeros_cubiertos": [
+            9
+          ],
+          "fila_excel": 33,
+          "descripcion_producto": "Canalizaciones con barras o ductos con barras.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I33",
+              "NO": "K33"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-010",
+          "item_excel": "Ítem 10",
+          "numeros_cubiertos": [
+            10
+          ],
+          "fila_excel": 36,
+          "descripcion_producto": "Cargadores de baterías para vehículos eléctricos.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I36",
+              "NO": "K36"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-011",
+          "item_excel": "Ítem 11",
+          "numeros_cubiertos": [
+            11
+          ],
+          "fila_excel": 39,
+          "descripcion_producto": "Celdas para uso en subestaciones de media tensión.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I39",
+              "NO": "K39"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-012",
+          "item_excel": "Ítem 12",
+          "numeros_cubiertos": [
+            12
+          ],
+          "fila_excel": 42,
+          "descripcion_producto": "Cinta aislante eléctrica.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I42",
+              "NO": "K42"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "3M",
+                "label_original_excel": "Marca 1: 3M"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 44,
+                  "organismo_que_certifica": "ICONTEC",
+                  "numero_certificado": "CSR-CER706489",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-013",
+          "item_excel": "Ítem 13",
+          "numeros_cubiertos": [
+            13
+          ],
+          "fila_excel": 45,
+          "descripcion_producto": "Clavijas eléctricas para baja tensión.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I45",
+              "NO": "K45"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-014",
+          "item_excel": "Ítem 14",
+          "numeros_cubiertos": [
+            14
+          ],
+          "fila_excel": 48,
+          "descripcion_producto": "Controladores o impulsores para cercas eléctricas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I48",
+              "NO": "K48"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-015",
+          "item_excel": "Ítem 15",
+          "numeros_cubiertos": [
+            15
+          ],
+          "fila_excel": 51,
+          "descripcion_producto": "Contactores eléctricos para corrientes superiores a 15 A.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I51",
+              "NO": "K51"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-016",
+          "item_excel": "Ítem 16",
+          "numeros_cubiertos": [
+            16
+          ],
+          "fila_excel": 54,
+          "descripcion_producto": "Condensadores y bancos de condensadores con capacidad nominal superior a 3 kVAR.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I54",
+              "NO": "K54"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-017",
+          "item_excel": "Ítem 17",
+          "numeros_cubiertos": [
+            17
+          ],
+          "fila_excel": 57,
+          "descripcion_producto": "Conectores, terminales y empalmes para conductores de circuitos eléctricos.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I57",
+              "NO": "K57"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-018",
+          "item_excel": "Ítem 18",
+          "numeros_cubiertos": [
+            18
+          ],
+          "fila_excel": 60,
+          "descripcion_producto": "Crucetas de uso en estructuras de apoyo de redes eléctricas",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I60",
+              "NO": "K60"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-019",
+          "item_excel": "Ítem 19",
+          "numeros_cubiertos": [
+            19
+          ],
+          "fila_excel": 63,
+          "descripcion_producto": "Dispositivos de protección contra sobretensiones transitorias para menos de 1000 V.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I63",
+              "NO": "K63"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-20_21",
+          "item_excel": "Ítem 20-21",
+          "numeros_cubiertos": [
+            20,
+            21
+          ],
+          "fila_excel": 66,
+          "descripcion_producto": "DPS transitorias para > 1 kV y < 66 kV (limitadores de tensión y/o amortiguadores de onda).",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I66",
+              "NO": "K66"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-022",
+          "item_excel": "Ítem 22",
+          "numeros_cubiertos": [
+            22
+          ],
+          "fila_excel": 69,
+          "descripcion_producto": "Duchas eléctricas o calentadores eléctricos de paso.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I69",
+              "NO": "K69"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 71,
+                  "organismo_que_certifica": "",
+                  "numero_certificado": "",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-023",
+          "item_excel": "Ítem 23",
+          "numeros_cubiertos": [
+            23
+          ],
+          "fila_excel": 72,
+          "descripcion_producto": "Electrodos de puesta a tierra",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I72",
+              "NO": "K72"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "TODO HERRAJES",
+                "label_original_excel": "Marca 1: TODO HERRAJES"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 74,
+                  "organismo_que_certifica": "CIDET",
+                  "numero_certificado": "04478",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-024",
+          "item_excel": "Ítem 24",
+          "numeros_cubiertos": [
+            24
+          ],
+          "fila_excel": 75,
+          "descripcion_producto": "Electrobombas de tensión superior a 25 V en corriente alterna o 48 V en corriente continua.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I75",
+              "NO": "K75"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-025",
+          "item_excel": "Ítem 25",
+          "numeros_cubiertos": [
+            25
+          ],
+          "fila_excel": 78,
+          "descripcion_producto": "Equipos unitarios para alumbrados de emergencia.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I78",
+              "NO": "K78"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-026",
+          "item_excel": "Ítem 26",
+          "numeros_cubiertos": [
+            26
+          ],
+          "fila_excel": 81,
+          "descripcion_producto": "Estructuras de líneas de transmisión y redes de distribución, incluye torrecillas y los perfiles metálicos exclusivos para ese uso.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I81",
+              "NO": "K81"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-027",
+          "item_excel": "Ítem 27",
+          "numeros_cubiertos": [
+            27
+          ],
+          "fila_excel": 84,
+          "descripcion_producto": "Extensiones eléctricas para tensión menor a 600 V.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I84",
+              "NO": "K84"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-028",
+          "item_excel": "Ítem 28",
+          "numeros_cubiertos": [
+            28
+          ],
+          "fila_excel": 87,
+          "descripcion_producto": "Fusibles y portafusibles para instalaciones eléctricas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I87",
+              "NO": "K87"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 92,
+                  "organismo_que_certifica": "CÓDIGO: F-GI-16",
+                  "numero_certificado": "",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": ""
+                  }
+                },
+                {
+                  "fila_excel": 93,
+                  "organismo_que_certifica": "FECHA: 08/08/2018",
+                  "numero_certificado": "",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": ""
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 92,
+                  "organismo_que_certifica": "VERSIÓN: 2",
+                  "numero_certificado": "",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": ""
+                  }
+                },
+                {
+                  "fila_excel": 93,
+                  "organismo_que_certifica": "PÁGINA 2 de 2",
+                  "numero_certificado": "",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": ""
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "PROD-029",
+          "item_excel": "Ítem 29",
+          "numeros_cubiertos": [
+            29
+          ],
+          "fila_excel": 95,
+          "descripcion_producto": "Generadores de corriente alterna o continua, de potencia igual a mayor de 1 kVA",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I95",
+              "NO": "K95"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-030",
+          "item_excel": "Ítem 30",
+          "numeros_cubiertos": [
+            30
+          ],
+          "fila_excel": 98,
+          "descripcion_producto": "Herrajes para líneas de transmisión  y redes de distribución eléctrica.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I98",
+              "NO": "K98"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-031",
+          "item_excel": "Ítem 31",
+          "numeros_cubiertos": [
+            31
+          ],
+          "fila_excel": 101,
+          "descripcion_producto": "Interruptores o disyuntores automáticos para tensión menor a 1000 V.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I101",
+              "NO": "K101"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "SCHNEIDER",
+                "label_original_excel": "Marca 3: SCHNEIDER"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 103,
+                  "organismo_que_certifica": "QCERT",
+                  "numero_certificado": "1463",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "SCHNEIDER",
+                "label_original_excel": "Marca 2: SCHNEIDER"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 103,
+                  "organismo_que_certifica": "QCERT",
+                  "numero_certificado": "1462",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "LUMINEX",
+                "label_original_excel": "Marca 3: LUMINEX"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 103,
+                  "organismo_que_certifica": "CIDET",
+                  "numero_certificado": "02050",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-032",
+          "item_excel": "Ítem 32",
+          "numeros_cubiertos": [
+            32
+          ],
+          "fila_excel": 104,
+          "descripcion_producto": "Interruptores manuales o switches de baja tensión, incluyendo el tipo cuchilla.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I104",
+              "NO": "K104"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "SCHNEIDER",
+                "label_original_excel": "Marca 1: SCHNEIDER"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 106,
+                  "organismo_que_certifica": "QCERT",
+                  "numero_certificado": "1510",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-033",
+          "item_excel": "Ítem 33",
+          "numeros_cubiertos": [
+            33
+          ],
+          "fila_excel": 107,
+          "descripcion_producto": "Interruptores de media tensión.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I107",
+              "NO": "K107"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-034",
+          "item_excel": "Ítem 34",
+          "numeros_cubiertos": [
+            34
+          ],
+          "fila_excel": 110,
+          "descripcion_producto": "Motores eléctricos para tensiones nominales > 25 V y potencias ≥ 375 W AC o DC",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I110",
+              "NO": "K110"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-035",
+          "item_excel": "Ítem 35",
+          "numeros_cubiertos": [
+            35
+          ],
+          "fila_excel": 113,
+          "descripcion_producto": "Multitomas eléctricas para tensión menor a 600 V.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I113",
+              "NO": "K113"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-036",
+          "item_excel": "Ítem 36",
+          "numeros_cubiertos": [
+            36
+          ],
+          "fila_excel": 116,
+          "descripcion_producto": "Paneles solares fotovoltaicos para uso en instalaciones eléctricas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I116",
+              "NO": "K116"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-037",
+          "item_excel": "Ítem 37",
+          "numeros_cubiertos": [
+            37
+          ],
+          "fila_excel": 119,
+          "descripcion_producto": "Portalámparas o portabombillas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I119",
+              "NO": "K119"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-038",
+          "item_excel": "Ítem 38",
+          "numeros_cubiertos": [
+            38
+          ],
+          "fila_excel": 122,
+          "descripcion_producto": "Postes de concreto, metálicos, madera u otros materiales, para uso en redes y líneas eléctricas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I122",
+              "NO": "K122"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-039",
+          "item_excel": "Ítem 39",
+          "numeros_cubiertos": [
+            39
+          ],
+          "fila_excel": 125,
+          "descripcion_producto": "Productos para instalaciones eléctricas especiales, para áreas clasificadas como peligrosas",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I125",
+              "NO": "K125"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-040",
+          "item_excel": "Ítem 40",
+          "numeros_cubiertos": [
+            40
+          ],
+          "fila_excel": 128,
+          "descripcion_producto": "Productos para equipos especiales, tales como: ascensores, piscinas, sistemas contraincendio, etc.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I128",
+              "NO": "K128"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-041",
+          "item_excel": "Ítem 41",
+          "numeros_cubiertos": [
+            41
+          ],
+          "fila_excel": 131,
+          "descripcion_producto": "Productos para instalaciones eléctricas  en lugares con alta concentración de personas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I131",
+              "NO": "K131"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-042",
+          "item_excel": "Ítem 42",
+          "numeros_cubiertos": [
+            42
+          ],
+          "fila_excel": 134,
+          "descripcion_producto": "Puertas cortafuego para uso en bóvedas de subestaciones eléctricas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I134",
+              "NO": "K134"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-043",
+          "item_excel": "Ítem 43",
+          "numeros_cubiertos": [
+            43
+          ],
+          "fila_excel": 137,
+          "descripcion_producto": "Puestas a tierra temporales.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I137",
+              "NO": "K137"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-044",
+          "item_excel": "Ítem 44",
+          "numeros_cubiertos": [
+            44
+          ],
+          "fila_excel": 140,
+          "descripcion_producto": "Pulsadores eléctricos.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I140",
+              "NO": "K140"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-045",
+          "item_excel": "Ítem 45",
+          "numeros_cubiertos": [
+            45
+          ],
+          "fila_excel": 143,
+          "descripcion_producto": "Tableros eléctricos y paneles, armarios o encerramientos para tableros de BT",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I143",
+              "NO": "K143"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "SCHNEIDER",
+                "label_original_excel": "Marca 1: SCHNEIDER"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 145,
+                  "organismo_que_certifica": "SGS",
+                  "numero_certificado": "CRS 14298",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "IMEL",
+                "label_original_excel": "Marca 2: IMEL"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 145,
+                  "organismo_que_certifica": "CIDET",
+                  "numero_certificado": "04289",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-046",
+          "item_excel": "Ítem 46",
+          "numeros_cubiertos": [
+            46
+          ],
+          "fila_excel": 146,
+          "descripcion_producto": "Celdas de media tensión.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I146",
+              "NO": "K146"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-047",
+          "item_excel": "Ítem 47",
+          "numeros_cubiertos": [
+            47
+          ],
+          "fila_excel": 149,
+          "descripcion_producto": "Tomacorrientes para uso general o aplicaciones en instalaciones especiales para baja tensión.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I149",
+              "NO": "K149"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "SCHNEIDER",
+                "label_original_excel": "Marca 1: SCHNEIDER"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 151,
+                  "organismo_que_certifica": "QCERT",
+                  "numero_certificado": "1510",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": ""
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-048",
+          "item_excel": "Ítem 48",
+          "numeros_cubiertos": [
+            48
+          ],
+          "fila_excel": 152,
+          "descripcion_producto": "Transferencias automáticas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I152",
+              "NO": "K152"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-049",
+          "item_excel": "Ítem 49",
+          "numeros_cubiertos": [
+            49
+          ],
+          "fila_excel": 155,
+          "descripcion_producto": "Relés térmicos y electrónicos para protección contra sobrecargas.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I155",
+              "NO": "K155"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-050",
+          "item_excel": "Ítem 50",
+          "numeros_cubiertos": [
+            50
+          ],
+          "fila_excel": 158,
+          "descripcion_producto": "Reconectadores y seccionadores de media tensión.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I158",
+              "NO": "K158"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-051",
+          "item_excel": "Ítem 51",
+          "numeros_cubiertos": [
+            51
+          ],
+          "fila_excel": 161,
+          "descripcion_producto": "Transformadores de capacidad mayor o igual a 3 kVA.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I161",
+              "NO": "K161"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-052",
+          "item_excel": "Ítem 52",
+          "numeros_cubiertos": [
+            52
+          ],
+          "fila_excel": 164,
+          "descripcion_producto": "Tubos de hierro o aleación de hierro, para instalaciones eléctricas (Tubos Conduit metálicos).",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I164",
+              "NO": "K164"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 166,
+                  "organismo_que_certifica": "",
+                  "numero_certificado": "",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-053",
+          "item_excel": "Ítem 53",
+          "numeros_cubiertos": [
+            53
+          ],
+          "fila_excel": 167,
+          "descripcion_producto": "Tubos no metálicos para instalaciones eléctricas (Tubos Conduit no metálicos).",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "SI",
+            "celdas": {
+              "SI": "I167",
+              "NO": "K167"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "MEXICHEM COLOMBIA S A S",
+                "label_original_excel": "Marca 1: MEXICHEM COLOMBIA S A S"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 169,
+                  "organismo_que_certifica": "ICONTEC",
+                  "numero_certificado": "CSR-CER585081",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "CELTA",
+                "label_original_excel": "Marca 2: CELTA"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": [
+                {
+                  "fila_excel": 169,
+                  "organismo_que_certifica": "ICONTEC",
+                  "numero_certificado": "CSR-CER605026",
+                  "cumple": {
+                    "tipo": "radio",
+                    "opciones": [
+                      "SI",
+                      "NO"
+                    ],
+                    "valor_excel": "SI"
+                  }
+                }
+              ]
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-054",
+          "item_excel": "Ítem 54",
+          "numeros_cubiertos": [
+            54
+          ],
+          "fila_excel": 170,
+          "descripcion_producto": "Unidades ininterrumpidas de potencia (UPS).",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I170",
+              "NO": "K170"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        },
+        {
+          "id": "PROD-055",
+          "item_excel": "Ítem 55",
+          "numeros_cubiertos": [
+            55
+          ],
+          "fila_excel": 173,
+          "descripcion_producto": "Unidades de tensión regulada (reguladores de tensión) de potencia mayor a 500 W.",
+          "aplica": {
+            "tipo": "radio",
+            "opciones": [
+              "SI",
+              "NO"
+            ],
+            "valor_excel": "NO",
+            "celdas": {
+              "SI": "I173",
+              "NO": "K173"
+            }
+          },
+          "marcas": [
+            {
+              "numero": 1,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 1",
+                "valor_excel": "",
+                "label_original_excel": "Marca 1:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 2,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 2",
+                "valor_excel": "",
+                "label_original_excel": "Marca 2:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 3,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 3",
+                "valor_excel": "",
+                "label_original_excel": "Marca 3:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            },
+            {
+              "numero": 4,
+              "marca": {
+                "tipo": "text",
+                "label": "Marca 4",
+                "valor_excel": "",
+                "label_original_excel": "Marca 4:"
+              },
+              "organismo_que_certifica": {
+                "tipo": "text"
+              },
+              "numero_certificado": {
+                "tipo": "text"
+              },
+              "cumple": {
+                "tipo": "radio",
+                "opciones": [
+                  "SI",
+                  "NO"
+                ]
+              },
+              "registros_excel": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "validacion_extraccion": {
+    "items_esperados_por_filas_excel": 54,
+    "items_extraidos": 54,
+    "numeros_esperados_cubiertos": 55,
+    "numeros_cubiertos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "numeros_faltantes": [],
+    "numeros_duplicados": [],
+    "items_sin_descripcion": [],
+    "imagenes_extraidas": 2,
+    "nota": "El Excel tiene un rótulo combinado “Ítem 20-21”; por eso hay 54 filas de ítem, pero cubren los números 1 al 55.",
+    "estado": "OK"
+  }
+}
