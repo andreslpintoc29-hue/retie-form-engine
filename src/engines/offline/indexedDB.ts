@@ -512,6 +512,10 @@ export class OfflineEngine {
     return result?.expediente || null;
   }
 
+  async deleteExpediente(inspectionId: string): Promise<void> {
+    await this.transaction('drafts', 'readwrite', (store) => store.delete(`expediente_${inspectionId}`));
+  }
+
   // ============================================
   // SYNC QUEUE - CORE
   // ============================================

@@ -7,47 +7,47 @@ import { pdfEngine } from '@/engines/pdf/pdfEngine';
 
 // Default mock values for premium wow effect
 const DEFAULT_ORGANISMO = {
-  razonSocial: 'RYF ENERGY INSPECTION SAS',
-  nit: '901.345.678-9',
-  codigoOnac: '19-OIN-042',
-  normaAcreditacion: 'ISO/IEC 17020:2012',
-  alcance: 'Instalaciones Eléctricas de Uso Final, Distribución y Transformación',
+  razonSocial: '',
+  nit: '',
+  codigoOnac: '',
+  normaAcreditacion: '',
+  alcance: '',
   logo: '',
-  contacto: 'contacto@ryfenergy.com - (601) 345-6789'
+  contacto: ''
 };
 
 const DEFAULT_INSPECTOR = {
-  nombre: 'Ing. Carlos Mario Restrepo',
-  matricula: 'CN205-54637',
-  cargo: 'Inspector Técnico Principal',
+  nombre: '',
+  matricula: '',
+  cargo: '',
   firma: '',
-  competencia: 'Certificado de Competencia ONAC #CC-98754'
+  competencia: ''
 };
 
 const DEFAULT_DECLARACIONES = {
-  disenoCumple: 'SI',
-  disenoFirmante: 'Ing. Alberto Lleras',
-  disenoMatricula: 'CN205-12345',
-  disenoFecha: '2026-01-15',
-  disenoAdjunto: 'diseño_aprobado.pdf',
-  construccionCumple: 'SI',
-  construccionFirmante: 'Ing. Marco Aurelio',
-  construccionMatricula: 'CN205-67890',
-  construccionFecha: '2026-03-10',
-  construccionAdjunto: 'declaracion_constructor.pdf',
-  operacionCumple: 'SI',
-  operacionFirmante: 'Ing. Pedro Martinez',
-  operacionMatricula: 'CN205-44332',
-  operacionFecha: '2026-04-02',
-  operacionAdjunto: 'acta_operador_red.pdf'
+  disenoCumple: '',
+  disenoFirmante: '',
+  disenoMatricula: '',
+  disenoFecha: '',
+  disenoAdjunto: '',
+  construccionCumple: '',
+  construccionFirmante: '',
+  construccionMatricula: '',
+  construccionFecha: '',
+  construccionAdjunto: '',
+  operacionCumple: '',
+  operacionFirmante: '',
+  operacionMatricula: '',
+  operacionFecha: '',
+  operacionAdjunto: ''
 };
 
 const DEFAULT_DICTAMEN = {
-  tipo: 'uso_final',
-  numero: 'DICT-2026-9875',
-  resultado: 'APROBADO',
-  fecha: new Date().toISOString().split('T')[0],
-  copiasControl: 'Original: Cliente / Copia 1: Archivo RYF / Copia 2: ONAC'
+  tipo: '',
+  numero: '',
+  resultado: '',
+  fecha: '',
+  copiasControl: ''
 };
 
 // FASE 3.5 — Alcance RETIE
@@ -69,75 +69,19 @@ const MODULOS_RETIE = [
 ];
 
 const DEFAULT_ALCANCE_RETIE = {
-  tipoInstalacion: 'uso_final_residencial',
-  tipoProyecto: 'nuevo',
+  tipoInstalacion: '',
+  tipoProyecto: '',
   especiales: [] as string[]
 };
 
 // Por defecto todos los módulos aplican
 const DEFAULT_MODULE_STATUS: Record<string, string> = {};
 
-const DEFAULT_NO_CONFORMIDADES = [
-  {
-    id: 'NC-001',
-    codigo: 'NC-UFR-024',
-    formularioOrigen: 'Uso Final Residencial',
-    itemRelacionado: 'Distancia de seguridad a partes energizadas',
-    descripcion: 'Se observó una distancia de seguridad menor a 1.2m en el tablero general de la vivienda tipo A.',
-    evidencia: '',
-    responsable: 'Consorcio Eléctrico Tequendama',
-    estado: 'closed',
-    fechaCierre: '2026-05-15',
-    evidenciaCierre: 'Registro fotográfico corregido y barra de protección acrílica instalada.'
-  },
-  {
-    id: 'NC-002',
-    codigo: 'NC-SPT-005',
-    formularioOrigen: 'Resistencia de Puesta a Tierra',
-    itemRelacionado: 'Continuidad de barra de puesta a tierra',
-    descripcion: 'Se detectó ausencia de soldadura exotérmica en la unión del cable principal a la varilla de puesta a tierra principal.',
-    evidencia: '',
-    responsable: 'Consorcio Eléctrico Tequendama',
-    estado: 'open',
-    fechaCierre: '',
-    evidenciaCierre: ''
-  }
-];
+const DEFAULT_NO_CONFORMIDADES: any[] = [];
 
-const DEFAULT_EVIDENCIAS = [
-  {
-    id: 'EV-001',
-    foto: '',
-    formularioAsociado: 'Ascensores',
-    preguntaAsociada: 'Medición de aislamiento de motores',
-    comentario: 'Lectura de 500 MegaOhmios con megóhmetro calibrado en cuarto de máquinas.',
-    timestamp: '2026-05-19 09:30:15'
-  }
-];
+const DEFAULT_EVIDENCIAS: any[] = [];
 
-const DEFAULT_ADJUNTOS = [
-  {
-    id: 'ADJ-001',
-    tipo: 'Planos',
-    fileName: 'plano_unifilar_general_v3.pdf',
-    fileSize: '4.2 MB',
-    uploadedAt: '2026-05-18'
-  },
-  {
-    id: 'ADJ-002',
-    tipo: 'Memorias',
-    fileName: 'memorias_calculo_spt.pdf',
-    fileSize: '1.8 MB',
-    uploadedAt: '2026-05-18'
-  },
-  {
-    id: 'ADJ-003',
-    tipo: 'Certificados de producto',
-    fileName: 'certificado_retie_tableros_schneider.pdf',
-    fileSize: '2.5 MB',
-    uploadedAt: '2026-05-19'
-  }
-];
+const DEFAULT_ADJUNTOS: any[] = [];
 
 export default function ExpedientePage() {
   const [inspectionId] = useState(() => {
@@ -469,6 +413,40 @@ export default function ExpedientePage() {
             >
               📄 Generar Dictamen PDF
             </button>
+
+            <button
+              onClick={async () => {
+                if (window.confirm('¿Está seguro de limpiar este formulario? Esta acción borrará el progreso actual de este módulo.')) {
+                  const emptyOrganismo = { razonSocial: '', nit: '', codigoOnac: '', normaAcreditacion: '', alcance: '', logo: '', contacto: '' };
+                  const emptyInspector = { nombre: '', matricula: '', cargo: '', firma: '', competencia: '' };
+                  const emptyDeclaraciones = { disenoCumple: '', disenoFirmante: '', disenoMatricula: '', disenoFecha: '', disenoAdjunto: '', construccionCumple: '', construccionFirmante: '', construccionMatricula: '', construccionFecha: '', construccionAdjunto: '', operacionCumple: '', operacionFirmante: '', operacionMatricula: '', operacionFecha: '', operacionAdjunto: '' };
+                  const emptyDictamen = { tipo: '', numero: '', resultado: '', fecha: '', copiasControl: '' };
+                  const emptyAlcance = { tipoInstalacion: '', tipoProyecto: '', especiales: [] };
+                  setOrganismo(emptyOrganismo);
+                  setInspector(emptyInspector);
+                  setDeclaraciones(emptyDeclaraciones);
+                  setDictamen(emptyDictamen);
+                  setAlcanceRetie(emptyAlcance);
+                  setNoConformidades([]);
+                  setEvidencias([]);
+                  setAdjuntos([]);
+                  await offlineEngine.saveExpediente(inspectionId, {
+                    organismo: emptyOrganismo,
+                    inspector: emptyInspector,
+                    declaraciones: emptyDeclaraciones,
+                    dictamen: emptyDictamen,
+                    noConformidades: [],
+                    evidencias: [],
+                    adjuntos: [],
+                    alcanceRetie: emptyAlcance,
+                    moduleStatus: moduleStatus
+                  });
+                }
+              }}
+              className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-xs font-bold transition-all shadow-md shadow-red-500/20"
+            >
+              🗑️ Limpiar formulario
+            </button>
           </div>
         </div>
       </header>
@@ -520,7 +498,7 @@ export default function ExpedientePage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-semibold transition-all ${activeTab === tab.id ? 'bg-yellow-500 text-slate-950 shadow-md' : 'bg-slate-800 text-slate-300 hover:bg-slate-750'}`}
+              className={`w-full text-left px-4 py-2.5 rounded-lg text-xs font-semibold transition-all ${activeTab === tab.id ? 'bg-yellow-500 text-slate-950 shadow-md' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}`}
             >
               {tab.label}
             </button>
@@ -610,7 +588,7 @@ export default function ExpedientePage() {
                   <div>
                     <label className="block text-[10px] text-slate-400 mb-0.5">Diseño Cumple</label>
                     <select value={declaraciones.disenoCumple} onChange={(e) => updateDeclaraciones('disenoCumple', e.target.value)}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5">
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5">
                       <option value="SI">SI</option>
                       <option value="NO">NO</option>
                       <option value="N/A">N/A</option>
@@ -619,12 +597,12 @@ export default function ExpedientePage() {
                   <div>
                     <label className="block text-[10px] text-slate-400 mb-0.5">Firmante / Diseñador</label>
                     <input type="text" value={declaraciones.disenoFirmante} onChange={(e) => updateDeclaraciones('disenoFirmante', e.target.value)}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                   <div>
                     <label className="block text-[10px] text-slate-400 mb-0.5">Matrícula Diseñador</label>
                     <input type="text" value={declaraciones.disenoMatricula} onChange={(e) => updateDeclaraciones('disenoMatricula', e.target.value)}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                 </div>
               </div>
@@ -636,7 +614,7 @@ export default function ExpedientePage() {
                   <div>
                     <label className="block text-[10px] text-slate-400 mb-0.5">Construcción Cumple</label>
                     <select value={declaraciones.construccionCumple} onChange={(e) => updateDeclaraciones('construccionCumple', e.target.value)}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5">
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5">
                       <option value="SI">SI</option>
                       <option value="NO">NO</option>
                       <option value="N/A">N/A</option>
@@ -645,12 +623,12 @@ export default function ExpedientePage() {
                   <div>
                     <label className="block text-[10px] text-slate-400 mb-0.5">Firmante / Constructor</label>
                     <input type="text" value={declaraciones.construccionFirmante} onChange={(e) => updateDeclaraciones('construccionFirmante', e.target.value)}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                   <div>
                     <label className="block text-[10px] text-slate-400 mb-0.5">Matrícula Constructor</label>
                     <input type="text" value={declaraciones.construccionMatricula} onChange={(e) => updateDeclaraciones('construccionMatricula', e.target.value)}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                 </div>
               </div>
@@ -712,31 +690,51 @@ export default function ExpedientePage() {
                   <div>
                     <label className="block text-[10px] text-slate-400">Código NC</label>
                     <input type="text" placeholder="Ej: NC-UFR-005" value={newNc.codigo} onChange={(e) => setNewNc({ ...newNc, codigo: e.target.value })}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                   <div>
                     <label className="block text-[10px] text-slate-400">Formulario Origen</label>
                     <input type="text" value={newNc.formularioOrigen} onChange={(e) => setNewNc({ ...newNc, formularioOrigen: e.target.value })}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                   <div>
                     <label className="block text-[10px] text-slate-400">Ítem Relacionado</label>
                     <input type="text" placeholder="Ej: Interruptores de falla" value={newNc.itemRelacionado} onChange={(e) => setNewNc({ ...newNc, itemRelacionado: e.target.value })}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-[10px] text-slate-400">Descripción</label>
                     <input type="text" placeholder="Escriba la descripción del hallazgo" value={newNc.descripcion} onChange={(e) => setNewNc({ ...newNc, descripcion: e.target.value })}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                   <div>
                     <label className="block text-[10px] text-slate-400">Responsable</label>
                     <input type="text" value={newNc.responsable} onChange={(e) => setNewNc({ ...newNc, responsable: e.target.value })}
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5" />
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
                 </div>
                 <button onClick={addNC} className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 rounded text-xs font-semibold">
                   Añadir No Conformidad
+                </button>
+                <button
+                  onClick={async () => {
+                    if (window.confirm('¿Está seguro de limpiar todas las no conformidades?')) {
+                      setNoConformidades([]);
+                      setNewNc({
+                        codigo: '',
+                        formularioOrigen: 'Uso Final Residencial',
+                        itemRelacionado: '',
+                        descripcion: '',
+                        responsable: '',
+                        estado: 'open'
+                      });
+                      await handleSave({ noConformidades: [] });
+                      await offlineEngine.deleteExpediente(inspectionId);
+                    }
+                  }}
+                  className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-semibold shadow-md transition-all"
+                >
+                  🗑️ Limpiar formulario
                 </button>
               </div>
 
@@ -754,7 +752,7 @@ export default function ExpedientePage() {
                   </thead>
                   <tbody className="divide-y divide-slate-700/60">
                     {noConformidades.map(nc => (
-                      <tr key={nc.id} className="hover:bg-slate-750">
+                      <tr key={nc.id} className="hover:bg-slate-700">
                         <td className="px-3 py-2 font-mono text-teal-300">{nc.codigo}</td>
                         <td className="px-3 py-2 max-w-xs truncate">{nc.itemRelacionado}</td>
                         <td className="px-3 py-2 text-slate-400">{nc.formularioOrigen}</td>
@@ -792,7 +790,7 @@ export default function ExpedientePage() {
                     <label className="block text-[10px] text-slate-400 mb-1">Módulo RETIE Asociado</label>
                     <select
                       id="upload_form_id"
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
                     >
                       {MODULOS_RETIE.map(m => (
                         <option key={m.key} value={m.key}>{m.label}</option>
@@ -805,7 +803,7 @@ export default function ExpedientePage() {
                       id="upload_question_id"
                       type="text"
                       placeholder="Ej: Medición de resistencia de electrodos"
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -814,7 +812,7 @@ export default function ExpedientePage() {
                       id="upload_comment"
                       type="text"
                       placeholder="Ej: Lectura realizada con telurómetro marca Fluke"
-                      className="w-full bg-slate-750 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -823,7 +821,7 @@ export default function ExpedientePage() {
                       id="upload_file"
                       type="file"
                       accept="image/*"
-                      className="w-full text-xs text-slate-300 file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-slate-700 file:text-white hover:file:bg-slate-600 cursor-pointer"
+                      className="w-full text-xs text-slate-300 file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-slate-700 file:text-black hover:file:bg-slate-600 cursor-pointer"
                     />
                   </div>
                 </div>
@@ -879,6 +877,24 @@ export default function ExpedientePage() {
                   className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded text-xs font-semibold shadow-md transition-all"
                 >
                   Subir Foto / Evidencia
+                </button>
+                <button
+                  onClick={async () => {
+                    if (window.confirm('¿Está seguro de limpiar todas las fotos/evidencias? Esta acción no afecta otros módulos.')) {
+                      setEvidencias([]);
+                      await handleSave({ evidencias: [] });
+                      await offlineEngine.deleteExpediente(inspectionId);
+                      const questionEl = document.getElementById('upload_question_id') as HTMLInputElement;
+                      const commentEl = document.getElementById('upload_comment') as HTMLInputElement;
+                      const fileEl = document.getElementById('upload_file') as HTMLInputElement;
+                      if (questionEl) questionEl.value = '';
+                      if (commentEl) commentEl.value = '';
+                      if (fileEl) fileEl.value = '';
+                    }
+                  }}
+                  className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-semibold shadow-md transition-all"
+                >
+                  🗑️ Limpiar formulario
                 </button>
               </div>
 
@@ -1086,7 +1102,7 @@ export default function ExpedientePage() {
                   </thead>
                   <tbody className="divide-y divide-slate-700/60">
                     {adjuntos.map(adj => (
-                      <tr key={adj.id} className="hover:bg-slate-750">
+                      <tr key={adj.id} className="hover:bg-slate-700">
                         <td className="px-3 py-2 font-bold text-teal-400">{adj.tipo}</td>
                         <td className="px-3 py-2 font-mono">{adj.fileName}</td>
                         <td className="px-3 py-2 text-slate-400">{adj.fileSize || 'N/A'}</td>

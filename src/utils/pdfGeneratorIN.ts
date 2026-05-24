@@ -353,11 +353,11 @@ function drawHeader(doc: jsPDF, pageNum: number, totalPages: number) {
   doc.setFont('Helvetica', 'Bold');
   doc.setFontSize(9);
   doc.setTextColor(30, 41, 59);
-  doc.text('RYF ENERGY', startX + 22.5, startY + 9, { align: 'center' });
-  doc.text('INSPECTION SAS', startX + 22.5, startY + 13, { align: 'center' });
+  doc.text('DESARROLLADO POR', startX + 22.5, startY + 9, { align: 'center' });
+  doc.text('DIMOTIK SOLUTIONS', startX + 22.5, startY + 13, { align: 'center' });
   doc.setFont('Helvetica', 'Normal');
   doc.setFontSize(6.5);
-  doc.text('NIT: 901.379.529-6', startX + 22.5, startY + 18, { align: 'center' });
+  doc.text('NIT: 901324134', startX + 22.5, startY + 18, { align: 'center' });
 
   // Title
   doc.setFont('Helvetica', 'Bold');
@@ -453,5 +453,5 @@ function drawSignatureBlock(doc: jsPDF, y: number, answers: any) {
   doc.setTextColor(148, 163, 184);
   const genDate = new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' });
   doc.text(`Documento generado electrónicamente el: ${genDate}`, startX, y + 12);
-  doc.text('RYF ENERGY INSPECTION SAS - Hoja IN Índice y Resumen.', startX, y + 15.5);
+  doc.text('DESARROLLADO POR DIMOTIK SOLUTIONS - Hoja IN Índice y Resumen.', startX, y + 15.5);
 }

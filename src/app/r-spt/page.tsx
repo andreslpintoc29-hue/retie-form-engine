@@ -120,6 +120,22 @@ export default function RSptPage() {
               >
                 ✅ Finalizar
               </button>
+
+              <button
+                onClick={async () => {
+                  if (window.confirm('¿Está seguro de limpiar este formulario? Esta acción borrará el progreso actual.')) {
+                    try {
+                      await offlineEngine.saveDraft({ id: inspectionId, inspectionId: inspectionId, schemaId: SCHEMA.id, answers: {}, lastModified: Date.now() });
+                      window.location.reload();
+                    } catch(e) {
+                      console.error(e);
+                    }
+                  }
+                }}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg text-sm font-medium transition-colors text-white flex items-center gap-2"
+              >
+                🗑️ Limpiar formulario
+              </button>
             </div>
           </div>
         </div>
