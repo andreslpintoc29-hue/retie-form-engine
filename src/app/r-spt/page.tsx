@@ -125,7 +125,12 @@ export default function RSptPage() {
                 onClick={async () => {
                   if (window.confirm('¿Está seguro de limpiar este formulario? Esta acción borrará el progreso actual.')) {
                     try {
-                      await offlineEngine.saveDraft({ id: inspectionId, inspectionId: inspectionId, schemaId: SCHEMA.id, answers: {}, lastModified: Date.now() });
+                      await offlineEngine.saveDraft(inspectionId, {
+                        answers: {},
+                        fields: {},
+                        sheets: {},
+                        lastSaved: new Date().toISOString()
+                      });
                       window.location.reload();
                     } catch(e) {
                       console.error(e);
