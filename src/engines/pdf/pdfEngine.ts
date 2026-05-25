@@ -169,6 +169,66 @@ export class PDFEngine {
     return this;
   }
 
+  /**
+   * Normaliza metadatos de evidencia para evitar undefined/null en PDF.
+   * Fallback a valores seguros si los campos están vacíos.
+   */
+  private normalizeEvidence(evidence: any): { formId: string; questionId: string; caption: string; fileName: string; dataUrl: string } {
+    // Normalizar módulo/formulario
+    const formId = evidence.formId
+      || evidence.moduleId
+      || evidence.form
+      || evidence.formularioAsociado
+      || MODULE_LABELS[evidence.formId?.toUpperCase()] 
+      || 'Sin módulo';
+
+    // Normalizar pregunta/ítem
+    const questionId = evidence.questionId
+      || evidence.itemId
+      || evidence.question
+      || evidence.preguntaId
+      || evidence.preguntaAsociada
+      || '-';
+
+    // Normalizar descripción/caption
+    const caption = evidence.caption
+      || evidence.descripcion
+      || evidence.description
+      || evidence.observacion
+      || evidence.comentario
+      || 'Evidencia fotográfica';
+
+    // Normalizar nombre de archivo
+    const fileName = evidence.fileName
+      || evidence.name
+      || evidence.file
+      || 'foto_evidencia';
+
+    // Data URL de la imagen
+    const dataUrl = evidence.dataUrl
+      || evidence.preview
+      || evidence.imageData
+      || evidence.base64
+      || evidence.foto
+      || '';
+
+    // Construir etiqueta limpia
+    const cleanLabel = `${formId} — ${questionId}: ${caption}`
+      .replace(/undefined/g, '')
+      .replace(/null/g, '')
+      .replace(/— : /g, '— ')
+      .replace(/ — :/g, ':')
+      .trim();
+
+    return {
+      formId: String(formId),
+      questionId: String(questionId),
+      caption: cleanLabel || 'Evidencia fotográfica',
+      fileName: String(fileName),
+      dataUrl: String(dataUrl)
+    };
+  }
+
   async generateReport(options: ReportOptions): Promise<Blob> {
     // DIAGNÓSTICO DE PDFENGINE REQUERIDO POR EL USUARIO
     const iId = options.inspection?.inspectionId || 'N/A';
@@ -256,7 +316,9 @@ export class PDFEngine {
         this.addSectionTitle(sectionTitle);
         this.doc.setFontSize(9);
         this.doc.setTextColor('#64748b');
-        const msg = ms[key]
+        // Only show "pendiente" if explicitly marked as "aplicable" in moduleStatus
+        const isMarkedAplicable = ms[key] === 'aplicable';
+        const msg = isMarkedAplicable
           ? 'Módulo aplicable — pendiente de diligenciamiento.'
           : 'Formulario no diligenciado.';
         this.doc.text(msg, this.margin, this.currentY);
@@ -352,7 +414,7 @@ export class PDFEngine {
       renderModule('PISCINAS',    '13. LISTA DE CHEQUEO PISCINAS',                   options.formPiscinas,      () => this.addFormPiscinasNoCierre(options.formPiscinas));
       renderModule('ASCENSORES',  '14. LISTA DE CHEQUEO ASCENSORES',                 options.formAscensores,    () => this.addFormAscensoresNoCierre(options.formAscensores));
       renderModule('PRODUCTO',    '15. REVISIÓN DE PRODUCTOS',                       options.formProducto,      () => this.addFormProductoRich('15. REVISIÓN DE PRODUCTOS', RETIE_PRODUCTO_SCHEMA, options.formProducto, options.photoEvidence));
-      renderModule('R_SPT',       '16. RESISTENCIA DE PUESTA A TIERRA (R. SPT)',     options.formRSpt,          () => this.addFormRSpt(options.formRSpt));
+      renderModule('R_SPT',       '16. RESISTENCIA DE PUESTA A TIERRA (R. SPT)',     options.formRSpt,          () => this.addFormRSptWithEvidence(options.formRSpt, options.photoEvidence));
       renderModule('R_AISLAMIENTO','17. RESISTENCIA DE AISLAMIENTO',                 options.formAislamiento,   () => this.addFormAislamiento(options.formAislamiento));
       renderModule('ILUMINANCIA', '18. MEDICIONES DE ILUMINANCIA',                   options.formIluminancia,   () => this.addFormIluminancia(options.formIluminancia));
 
@@ -532,33 +594,36 @@ export class PDFEngine {
     this.currentY = this.doc.lastAutoTable.finalY + 10;
   }
 
-  private addPhotoEvidence(photos: { src?: string; dataUrl?: string; caption: string; formId?: string }[]): void {
+  private addPhotoEvidence(photos: any[]): void {
     if (!this.doc) return;
     
     console.log("=== LOG 6: addPhotoEvidence RECIBE ===");
     console.log("photos.length:", photos.length);
     
     this.addPageIfNeeded(60);
-    this.addSectionTitle('20. EVIDENCIAS');
+    this.addSectionTitle('20. EVIDENCIAS FOTOGRÁFICAS');
 
-    const cols = 2;
-    const imgWidth = 75;
-    const imgHeight = 55;
+    const cols = 1; // Una foto por fila para espacio de metadatos
+    const imgWidth = 100;
+    const imgHeight = 75;
     const paddingX = 10;
-    const paddingY = 20;
+    const paddingY = 45; // Espacio para metadatos
 
     let col = 0;
 
     photos.forEach((photo, idx) => {
+      // Normalizar evidencia
+      const normalized = this.normalizeEvidence(photo);
+      
       console.log(`  Procesando foto ${idx + 1}:`, {
-        caption: photo.caption,
-        hasDataUrl: !!photo.dataUrl,
-        dataUrlPrefix: photo.dataUrl ? photo.dataUrl.slice(0, 30) : 'N/A',
-        dataUrlLength: photo.dataUrl ? photo.dataUrl.length : 0,
-        startsWithDataImage: photo.dataUrl?.startsWith('data:image/') || false
+        formId: normalized.formId,
+        questionId: normalized.questionId,
+        caption: normalized.caption,
+        hasDataUrl: !!normalized.dataUrl,
+        startsWithDataImage: normalized.dataUrl?.startsWith('data:image/') || false
       });
       
-      const imageData = photo.dataUrl || photo.src;
+      const imageData = normalized.dataUrl;
       const hasValidImage = imageData && (imageData.startsWith('data:image/') || imageData.startsWith('http') || imageData.startsWith('/'));
 
       console.log(`  Foto ${idx + 1} - hasValidImage:`, hasValidImage);
@@ -566,11 +631,12 @@ export class PDFEngine {
       if (col === cols) {
         col = 0;
         this.currentY += imgHeight + paddingY;
-        this.addPageIfNeeded(imgHeight + paddingY);
+        this.addPageIfNeeded(imgHeight + paddingY + 10);
       }
 
       const x = this.margin + (col * (imgWidth + paddingX));
       
+      // Mostrar imagen
       if (hasValidImage) {
         try {
           // Detectar formato a partir del dataUrl
@@ -583,51 +649,77 @@ export class PDFEngine {
           // Fallback if image fails to render
           this.doc!.setFillColor(241, 245, 249); // slate-100
           this.doc!.rect(x, this.currentY, imgWidth, imgHeight, 'F');
-          this.doc!.setFontSize(8);
+          this.doc!.setFontSize(9);
           this.doc!.setTextColor('#64748b');
           this.doc!.setFont('helvetica', 'normal');
-          this.doc!.text("Evidencia registrada,\nimagen no disponible", x + 5, this.currentY + 25);
+          this.doc!.text("Evidencia registrada,\nimagen no disponible", x + 5, this.currentY + 30);
         }
       } else {
         // Fallback for missing/invalid dataUrl
         this.doc!.setFillColor(241, 245, 249); // slate-100
         this.doc!.rect(x, this.currentY, imgWidth, imgHeight, 'F');
-        this.doc!.setFontSize(8);
+        this.doc!.setFontSize(9);
         this.doc!.setTextColor('#64748b');
         this.doc!.setFont('helvetica', 'normal');
-        this.doc!.text("Evidencia registrada,\nimagen no disponible", x + 5, this.currentY + 25);
+        this.doc!.text("Evidencia registrada,\nimagen no disponible", x + 5, this.currentY + 30);
       }
       
-      this.doc!.setFontSize(8);
-      this.doc!.setTextColor('#64748b');
+      // Mostrar metadatos bajo la imagen
+      const metadataY = this.currentY + imgHeight + 3;
+      this.doc!.setFontSize(7);
+      this.doc!.setTextColor('#1e293b'); // slate-800
+      this.doc!.setFont('helvetica', 'bold');
+      
+      // Línea 1: Módulo e Ítem
+      const line1 = `Módulo: ${normalized.formId} | Ítem: ${normalized.questionId}`;
+      this.doc!.text(line1, x, metadataY);
+      
+      // Línea 2: Descripción (wrappable)
+      this.doc!.setFont('helvetica', 'normal');
+      const descLines = this.doc!.splitTextToSize(`Desc: ${normalized.caption}`, imgWidth - 2);
+      this.doc!.text(descLines, x, metadataY + 4);
+      
+      // Línea 3: Archivo
       this.doc!.setFont('helvetica', 'italic');
-      const capLines = this.doc!.splitTextToSize(photo.caption || '', imgWidth);
-      this.doc!.text(capLines, x, this.currentY + imgHeight + 4);
+      this.doc!.setTextColor('#64748b'); // slate-500
+      this.doc!.text(`Archivo: ${normalized.fileName}`, x, metadataY + 4 + (descLines.length * 3) + 2);
 
       col++;
     });
 
-    this.currentY += imgHeight + paddingY + 10;
+    this.currentY += imgHeight + paddingY + 5;
   }
 
-  private addAttachments(attachments: { type: string; fileName: string; size?: string; date?: string }[]): void {
+  private addAttachments(attachments: any[]): void {
     if (!this.doc) return;
     this.addPageIfNeeded(40);
     this.addSectionTitle('21. DOCUMENTOS ANEXOS');
 
+    // Normalizar cada adjunto para evitar undefined
     const attData = attachments.map(att => [
-      att.type,
-      att.fileName,
+      att.type || 'N/A',
+      att.formLabel || att.formId || 'General',
+      att.fileName || 'Sin nombre',
+      att.size || 'N/A',
+      att.observacion || att.notes || '-',
       att.date || new Date().toLocaleDateString('es-CO')
     ]);
 
     autoTable(this.doc, {
       startY: this.currentY,
-      head: [['Tipo de Documento', 'Nombre del Archivo', 'Fecha de Revisión']],
+      head: [['Tipo', 'Módulo', 'Archivo', 'Tamaño', 'Observación', 'Fecha']],
       body: attData,
       theme: 'striped',
-      headStyles: { fillColor: this.config.secondaryColor },
-      styles: { fontSize: 8 },
+      headStyles: { fillColor: this.config.secondaryColor, fontSize: 8 },
+      styles: { fontSize: 7 },
+      columnStyles: {
+        0: { cellWidth: 30 },
+        1: { cellWidth: 25 },
+        2: { cellWidth: 35 },
+        3: { cellWidth: 20 },
+        4: { cellWidth: 35 },
+        5: { cellWidth: 25 }
+      },
       margin: { left: this.margin, right: this.margin }
     });
 
@@ -1026,6 +1118,48 @@ export class PDFEngine {
     if (str.toLowerCase() === 'nan' || str.toLowerCase() === 'undefined' || str.toLowerCase() === 'null') {
       return fallback;
     }
+    return str;
+  }
+
+  /** Limpiar observaciones de diagnóstico del agente AI */
+  private cleanObservations(val: any): string {
+    if (val === undefined || val === null || val === '') return '';
+    const str = String(val).trim();
+    
+    // Palabras clave que indican texto de diagnóstico del agente
+    const diagnosticPatterns = [
+      /carga correctamente/i,
+      /producto\.\.\./i,
+      /r_spt\.\.\./i,
+      /r\.spt\.\.\./i,
+      /sección \d+/i,
+      /consolidación pdf global/i,
+      /consolidación de pdf/i,
+      /pdf global/i,
+      /flujo de datos/i,
+      /verificación de/i,
+      /registro de observaciones/i,
+      /líneas que contienen/i,
+      /observaciones reales del usuario/i,
+      /diagnóstico del agente/i,
+      /texto de diagnóstico/i,
+      /logs? de validación/i,
+      /logs? o validación/i,
+      /agente ai/i,
+      /agente ia/i,
+      /revisión diagnóstica/i,
+      /análisis de consistencia/i,
+      /validación de integridad/i,
+      /prueba de carga/i
+    ];
+
+    // Si el texto contiene patrones de diagnóstico, retornar vacío
+    for (const pattern of diagnosticPatterns) {
+      if (pattern.test(str)) {
+        return '';
+      }
+    }
+    
     return str;
   }
 
@@ -1545,7 +1679,7 @@ export class PDFEngine {
     });
 
     // --- OBSERVACIONES ---
-    const obsVal = this.cleanValue(data['Observaciones_observaciones'], '');
+    const obsVal = this.cleanObservations(data['Observaciones_observaciones']);
     if (obsVal) {
       this.addPageIfNeeded(20);
       this.doc.setFontSize(9);
@@ -1559,6 +1693,77 @@ export class PDFEngine {
       this.doc.text(splitText, this.margin, this.currentY);
       this.currentY += splitText.length * 4 + 5;
     }
+  }
+
+  /** R. SPT with evidence photos */
+  private addFormRSptWithEvidence(data: any, photoEvidence?: any[]): void {
+    // First render the form data
+    this.addFormRSpt(data);
+
+    // Then add evidence photos for R_SPT if present
+    const formPhotos = (photoEvidence || []).filter(p => !p.formId || p.formId === 'R_SPT');
+    if (formPhotos.length > 0) {
+      this.addPageIfNeeded(40);
+      this.addSectionTitle('Evidencias de R. SPT');
+      this.addFormPhotoGrid(formPhotos);
+    }
+  }
+
+  /** Generic photo grid helper for forms with evidence */
+  private addFormPhotoGrid(photos: { dataUrl?: string; caption: string; questionId?: string }[], cols: number = 3): void {
+    if (!this.doc || photos.length === 0) return;
+
+    const imgWidth = 60;
+    const imgHeight = 45;
+    const paddingX = 10;
+    const paddingY = 8;
+    const rowHeight = imgHeight + 22;
+
+    let col = 0;
+    let rowY = this.currentY;
+
+    photos.forEach((photo, idx) => {
+      if (col === cols) {
+        col = 0;
+        rowY += rowHeight;
+        this.addPageIfNeeded(rowHeight + 10);
+      }
+
+      const x = this.margin + (col * (imgWidth + paddingX));
+
+      if (photo.dataUrl && photo.dataUrl.startsWith('data:image/')) {
+        try {
+          let fmt = 'JPEG';
+          if (photo.dataUrl.startsWith('data:image/png')) fmt = 'PNG';
+          else if (photo.dataUrl.startsWith('data:image/webp')) fmt = 'WEBP';
+          this.doc.addImage(photo.dataUrl, fmt, x, rowY, imgWidth, imgHeight);
+          this.doc.setDrawColor(180, 180, 180);
+          this.doc.rect(x, rowY, imgWidth, imgHeight);
+        } catch (e) {
+          this.doc.setFillColor(241, 245, 249);
+          this.doc.rect(x, rowY, imgWidth, imgHeight, 'F');
+          this.doc.setFontSize(7);
+          this.doc.setTextColor('#64748b');
+          this.doc.text("Error rendering image", x + 5, rowY + 22);
+        }
+      } else {
+        this.doc.setFillColor(241, 245, 249);
+        this.doc.rect(x, rowY, imgWidth, imgHeight, 'F');
+        this.doc.setFontSize(7);
+        this.doc.setTextColor('#64748b');
+        this.doc.text("Sin imagen", x + 10, rowY + 22);
+      }
+
+      this.doc.setFontSize(7);
+      this.doc.setTextColor('#64748b');
+      this.doc.setFont('helvetica', 'italic');
+      const capLines = this.doc.splitTextToSize(photo.caption || '', imgWidth);
+      this.doc.text(capLines, x + 2, rowY + imgHeight + 3);
+
+      col++;
+    });
+
+    this.currentY = rowY + rowHeight + 5;
   }
 
   // ==========================================

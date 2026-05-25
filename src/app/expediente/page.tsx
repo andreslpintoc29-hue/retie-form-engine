@@ -7,13 +7,13 @@ import { pdfEngine } from '@/engines/pdf/pdfEngine';
 
 // Default mock values for premium wow effect
 const DEFAULT_ORGANISMO = {
-  razonSocial: '',
-  nit: '',
-  codigoOnac: '',
-  normaAcreditacion: '',
-  alcance: '',
+  razonSocial: 'DIMOTIK SOLUTIONS',
+  nit: '901324134',
+  codigoOnac: 'OC-1234',
+  normaAcreditacion: 'ISO/IEC 17020',
+  alcance: 'Instalaciones eléctricas RETIE',
   logo: '',
-  contacto: ''
+  contacto: '(+57) 1 2345678'
 };
 
 const DEFAULT_INSPECTOR = {
@@ -122,6 +122,7 @@ export default function ExpedientePage() {
     itemRelacionado: '',
     descripcion: '',
     responsable: '',
+    severidad: 'mayor',
     estado: 'open'
   });
 
@@ -207,7 +208,22 @@ export default function ExpedientePage() {
 
   const addNC = () => {
     if (!newNc.codigo || !newNc.itemRelacionado) return;
-    const list = [...noConformidades, { ...newNc, id: `NC-${Date.now()}` }];
+    const ncRecord = {
+      id: `NC-${Date.now()}`,
+      inspectionId,
+      codigo: newNc.codigo,
+      formularioOrigen: newNc.formularioOrigen,
+      formId: newNc.formularioOrigen, // Campo adicional para PDF
+      itemRelacionado: newNc.itemRelacionado,
+      descripcion: newNc.descripcion,
+      responsable: newNc.responsable,
+      severidad: newNc.severidad,
+      estado: newNc.estado,
+      createdAt: new Date().toISOString(),
+      fechaCierre: '',
+      evidenciaCierre: ''
+    };
+    const list = [...noConformidades, ncRecord];
     setNoConformidades(list);
     setNewNc({
       codigo: '',
@@ -215,6 +231,7 @@ export default function ExpedientePage() {
       itemRelacionado: '',
       descripcion: '',
       responsable: '',
+      severidad: 'mayor',
       estado: 'open'
     });
     handleSave({ noConformidades: list });
@@ -254,6 +271,14 @@ export default function ExpedientePage() {
     // Block 2 Data
     const draftProducto = await offlineEngine.loadDraft(`${inspectionId}_PRODUCTO`);
     const draftRSpt     = await offlineEngine.loadDraft(`${inspectionId}_R_SPT`);
+
+    // Logging para diagnosticar problemas de carga de PRODUCTO
+    console.log('=== PDF GENERATION DEBUG ===');
+    console.log('inspectionId:', inspectionId);
+    console.log('draftProducto exists:', !!draftProducto);
+    console.log('draftProducto.answers exists:', !!draftProducto?.answers);
+    console.log('draftProducto.answers keys:', draftProducto?.answers ? Object.keys(draftProducto.answers) : []);
+    console.log('draftProducto.answers keys count:', draftProducto?.answers ? Object.keys(draftProducto.answers).length : 0);
 
     // Block 3 Data — FASE 3.5
     const draftApantallamiento = await offlineEngine.loadDraft(`${inspectionId}_APANTALLAMIENTO`);
@@ -295,8 +320,14 @@ export default function ExpedientePage() {
       .filter(ev => ev.foto && ev.foto.startsWith('data:'))
       .map(ev => ({
         dataUrl:  ev.foto,
-        caption:  `${ev.formularioAsociado} — ${ev.preguntaAsociada}: ${ev.comentario}`,
-        formId:   ev.formularioAsociado || undefined
+        formId:   ev.formId || ev.formularioAsociado || 'Sin módulo',
+        questionId: ev.questionId || ev.preguntaAsociada || '-',
+        caption:  ev.caption || ev.comentario || ev.descripcion || 'Evidencia fotográfica',
+        fileName: ev.fileName || `foto_${Date.now()}.jpg`,
+        // Campos de fallback
+        formularioAsociado: ev.formularioAsociado,
+        preguntaAsociada: ev.preguntaAsociada,
+        comentario: ev.comentario
       }));
 
     const pdf = await pdfEngine.generateReport({
@@ -350,16 +381,23 @@ export default function ExpedientePage() {
         criticalCount: noConformidades.filter(nc => nc.estado === 'open').length,
         noConformities: noConformidades.map(nc => ({
           fieldLabel: nc.itemRelacionado,
-          severity: nc.estado === 'open' ? 'crítica' : 'mayor',
+          severity: nc.severidad || 'mayor',
           description: nc.descripcion
         }))
       } as any,
       photoEvidence: photoEvidences,
-      attachments: adjuntos.map(adj => ({
-        type: adj.tipo,
-        fileName: adj.fileName,
-        size: adj.fileSize
-      })),
+      attachments: adjuntos.map(adj => {
+        const formLabel = MODULOS_RETIE.find(m => m.key === adj.formId)?.label || adj.formId;
+        return {
+          type: adj.tipo,
+          fileName: adj.fileName,
+          size: adj.fileSize,
+          formId: adj.formId,
+          formLabel: formLabel,
+          observacion: adj.observacion,
+          date: adj.uploadedAt
+        };
+      }),
       dictamenResult: dictamen.resultado as any,
       
       // Pilot Forms 3B
@@ -712,6 +750,15 @@ export default function ExpedientePage() {
                     <input type="text" value={newNc.responsable} onChange={(e) => setNewNc({ ...newNc, responsable: e.target.value })}
                       className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5" />
                   </div>
+                  <div>
+                    <label className="block text-[10px] text-slate-400">Severidad</label>
+                    <select value={newNc.severidad} onChange={(e) => setNewNc({ ...newNc, severidad: e.target.value })}
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5">
+                      <option value="crítica">Crítica</option>
+                      <option value="mayor">Mayor</option>
+                      <option value="menor">Menor</option>
+                    </select>
+                  </div>
                 </div>
                 <button onClick={addNC} className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 rounded text-xs font-semibold">
                   Añadir No Conformidad
@@ -726,6 +773,7 @@ export default function ExpedientePage() {
                         itemRelacionado: '',
                         descripcion: '',
                         responsable: '',
+                        severidad: 'mayor',
                         estado: 'open'
                       });
                       await handleSave({ noConformidades: [] });
@@ -746,6 +794,7 @@ export default function ExpedientePage() {
                       <th className="px-3 py-2">Código</th>
                       <th className="px-3 py-2">Ítem</th>
                       <th className="px-3 py-2">Origen</th>
+                      <th className="px-3 py-2">Severidad</th>
                       <th className="px-3 py-2">Estado</th>
                       <th className="px-3 py-2 text-center">Acción</th>
                     </tr>
@@ -756,6 +805,7 @@ export default function ExpedientePage() {
                         <td className="px-3 py-2 font-mono text-teal-300">{nc.codigo}</td>
                         <td className="px-3 py-2 max-w-xs truncate">{nc.itemRelacionado}</td>
                         <td className="px-3 py-2 text-slate-400">{nc.formularioOrigen}</td>
+                        <td className="px-3 py-2 text-amber-400 font-semibold">{nc.severidad?.toUpperCase()}</td>
                         <td className="px-3 py-2">
                           <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${nc.estado === 'closed' ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30' : 'bg-red-950 text-red-400 border border-red-500/30'}`}>
                             {nc.estado.toUpperCase()}
@@ -1088,27 +1138,149 @@ export default function ExpedientePage() {
 
           {/* TAB: ADJUNTOS */}
           {activeTab === 'adjuntos' && (
-            <div className="space-y-4">
+            <div className="space-y-6">
               <h2 className="text-sm font-bold text-yellow-400 border-b border-slate-700 pb-2 mb-4">📎 ARCHIVOS Y DOCUMENTOS ADJUNTOS</h2>
+              
+              {/* Formulario para agregar adjuntos */}
+              <div className="bg-slate-900/40 p-4 border border-slate-700 rounded-lg space-y-4">
+                <p className="text-xs font-bold text-teal-400">Agregar Nuevo Adjunto</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <div>
+                    <label className="block text-[10px] text-slate-400 mb-1">Tipo de Archivo</label>
+                    <select
+                      id="attach_type"
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
+                    >
+                      <option value="Especificación Técnica">Especificación Técnica</option>
+                      <option value="Plano">Plano</option>
+                      <option value="Certificado">Certificado</option>
+                      <option value="Cronograma">Cronograma</option>
+                      <option value="Presupuesto">Presupuesto</option>
+                      <option value="Manual">Manual</option>
+                      <option value="Otro">Otro</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] text-slate-400 mb-1">Módulo Relacionado</label>
+                    <select
+                      id="attach_form_id"
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
+                    >
+                      {MODULOS_RETIE.map(m => (
+                        <option key={m.key} value={m.key}>{m.label}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] text-slate-400 mb-1">Archivo</label>
+                    <input
+                      id="attach_file"
+                      type="file"
+                      className="w-full text-xs text-slate-300 file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-slate-700 file:text-black hover:file:bg-slate-600 cursor-pointer"
+                    />
+                  </div>
+                  <div className="md:col-span-3">
+                    <label className="block text-[10px] text-slate-400 mb-1">Observación</label>
+                    <input
+                      id="attach_obs"
+                      type="text"
+                      placeholder="Ej: Plano de distribución revisado"
+                      className="w-full bg-slate-700 border border-slate-600 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-yellow-500"
+                    />
+                  </div>
+                </div>
+                <button
+                  onClick={async () => {
+                    const typeEl = document.getElementById('attach_type') as HTMLSelectElement;
+                    const formEl = document.getElementById('attach_form_id') as HTMLSelectElement;
+                    const fileEl = document.getElementById('attach_file') as HTMLInputElement;
+                    const obsEl = document.getElementById('attach_obs') as HTMLInputElement;
+
+                    const tipo = typeEl.value;
+                    const formId = formEl.value;
+                    const file = fileEl.files?.[0];
+                    const obs = obsEl.value.trim();
+
+                    if (!file) {
+                      alert('Por favor seleccione un archivo.');
+                      return;
+                    }
+
+                    // Convertir archivo a dataUrl
+                    const reader = new FileReader();
+                    reader.onload = async (e) => {
+                      const dataUrl = e.target?.result as string;
+
+                      // Crear entrada de adjunto
+                      const newAdj = {
+                        id: `ADJ-${Date.now()}`,
+                        inspectionId,
+                        tipo,
+                        formId,
+                        fileName: file.name,
+                        fileSize: (file.size / 1024).toFixed(2) + ' KB',
+                        mimeType: file.type,
+                        dataUrl: dataUrl,
+                        observacion: obs,
+                        uploadedAt: new Date().toLocaleString(),
+                        createdAt: new Date().toISOString()
+                      };
+
+                      const updatedAdjs = [...adjuntos, newAdj];
+                      setAdjuntos(updatedAdjs);
+                      await handleSave({ adjuntos: updatedAdjs });
+
+                      // Limpiar campos
+                      typeEl.value = 'Especificación Técnica';
+                      fileEl.value = '';
+                      obsEl.value = '';
+                    };
+                    reader.readAsDataURL(file);
+                  }}
+                  className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded text-xs font-semibold shadow-md transition-all"
+                >
+                  Agregar Adjunto
+                </button>
+                <button
+                  onClick={async () => {
+                    if (window.confirm('¿Está seguro de limpiar todos los adjuntos?')) {
+                      setAdjuntos([]);
+                      await handleSave({ adjuntos: [] });
+                    }
+                  }}
+                  className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-semibold shadow-md transition-all"
+                >
+                  🗑️ Limpiar adjuntos
+                </button>
+              </div>
+
+              {/* Tabla de adjuntos */}
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead className="bg-slate-900/60 text-slate-300">
                     <tr>
-                      <th className="px-3 py-2">Tipo de Archivo</th>
-                      <th className="px-3 py-2">Nombre del Archivo</th>
+                      <th className="px-3 py-2">Tipo</th>
+                      <th className="px-3 py-2">Módulo</th>
+                      <th className="px-3 py-2">Archivo</th>
                       <th className="px-3 py-2">Tamaño</th>
-                      <th className="px-3 py-2">Fecha Subida</th>
+                      <th className="px-3 py-2">Observación</th>
+                      <th className="px-3 py-2">Fecha</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-700/60">
-                    {adjuntos.map(adj => (
-                      <tr key={adj.id} className="hover:bg-slate-700">
-                        <td className="px-3 py-2 font-bold text-teal-400">{adj.tipo}</td>
-                        <td className="px-3 py-2 font-mono">{adj.fileName}</td>
-                        <td className="px-3 py-2 text-slate-400">{adj.fileSize || 'N/A'}</td>
-                        <td className="px-3 py-2 text-slate-500">{adj.uploadedAt}</td>
-                      </tr>
-                    ))}
+                    {adjuntos.map(adj => {
+                      const formLabel = MODULOS_RETIE.find(m => m.key === adj.formId)?.label || adj.formId;
+                      return (
+                        <tr key={adj.id} className="hover:bg-slate-700">
+                          <td className="px-3 py-2 font-bold text-teal-400">{adj.tipo}</td>
+                          <td className="px-3 py-2 text-slate-300">{formLabel}</td>
+                          <td className="px-3 py-2 font-mono text-slate-400">{adj.fileName}</td>
+                          <td className="px-3 py-2 text-slate-400">{adj.fileSize}</td>
+                          <td className="px-3 py-2 text-slate-400 max-w-xs truncate">{adj.observacion || '-'}</td>
+                          <td className="px-3 py-2 text-slate-500 text-[10px]">{adj.uploadedAt}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
