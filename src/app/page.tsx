@@ -13,7 +13,7 @@ export default function HomePage() {
             🏭 RETIE Inspection Platform
           </h1>
           <p className="text-lg text-slate-400">
-            Plataforma de Inspección Eléctrica Offline — RYF ENERGY INSPECTION SAS
+            Plataforma de Inspección Eléctrica Offline — DIMOTIK SOLUTIONS
           </p>
         </div>
         
