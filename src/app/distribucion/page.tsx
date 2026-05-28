@@ -8,6 +8,7 @@ import { offlineEngine } from '@/engines/offline/indexedDB';
 import { eventBus } from '@/core/integration/eventBus';
 import { RETIE_DISTRIBUCION_SCHEMA } from '@/schemas/retie/distribucion';
 import { downloadDistribucionPDF } from '@/utils/pdfGeneratorDistribucion';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_DISTRIBUCION_SCHEMA as any;
 const PUNTOS = [
@@ -34,6 +35,27 @@ export default function DistribucionPage() {
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [offlineOk, setOfflineOk] = useState(true);
   const [showFinalizar, setShowFinalizar] = useState(false);
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences Distribucion:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences Distribucion:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -438,6 +460,14 @@ export default function DistribucionPage() {
                         </div>
                       </div>
                     </div>
+                    <EvidenceUploader
+                      inspectionId={baseInspectionId}
+                      formId="DISTRIBUCION"
+                      questionId={pregunta.id}
+                      caption={pregunta.texto}
+                      evidencias={evidencias}
+                      onSaveEvidencias={handleSaveEvidencias}
+                    />
                   </div>
                 );
               })}

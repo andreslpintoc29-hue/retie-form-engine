@@ -11,6 +11,7 @@ import { offlineEngine } from '@/engines/offline/indexedDB';
 import { pdfEngine } from '@/engines/pdf/pdfEngine';
 import { RETIE_PRODUCTO_SCHEMA } from '@/schemas/retie/producto';
 import { downloadProductoPDF } from '@/utils/pdfGeneratorProducto';
+import { processEvidenceImage } from '@/utils/evidenceImageProcessor';
 
 export default function ProductoPage() {
   const router = useRouter();
@@ -83,6 +84,36 @@ export default function ProductoPage() {
     const baseId = inspectionId.replace('_PRODUCTO', '');
     const cached = await offlineEngine.getExpediente(baseId) || {};
     await offlineEngine.saveExpediente(baseId, { ...cached, evidencias: updated });
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, questionId: string, questionNumber: number) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const baseId = inspectionId.replace('_PRODUCTO', '');
+      const newEv = await processEvidenceImage({
+        file,
+        inspectionId: baseId,
+        formId: 'PRODUCTO',
+        questionId: questionId,
+        caption: `Evidencia ${questionNumber}`
+      });
+
+      setEvidencias(prev => {
+        const updated = [...prev, newEv];
+        (async () => {
+          const cached = await offlineEngine.getExpediente(baseId) || {};
+          await offlineEngine.saveExpediente(baseId, { ...cached, evidencias: updated });
+        })();
+        return updated;
+      });
+    } catch (err) {
+      console.error("Error processing evidence image:", err);
+      alert("Error al procesar la imagen.");
+    } finally {
+      e.target.value = '';
+    }
   };
 
   const form = useFormEngine({
@@ -252,41 +283,37 @@ export default function ProductoPage() {
                     </div>
                   )}
 
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (!file) return;
-                      const reader = new FileReader();
-                      reader.onload = () => {
-                        const dataUrl = reader.result as string;
-                        const newEv = {
-                          id: `ev-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-                          inspectionId: inspectionId.replace('_PRODUCTO', ''),
-                          formId: 'PRODUCTO',
-                          questionId: pregunta.id,
-                          fileName: file.name,
-                          mimeType: file.type,
-                          dataUrl,
-                          foto: dataUrl,
-                          caption: `Evidencia ${pregunta.numero}`,
-                          createdAt: new Date().toISOString()
-                        };
-                        setEvidencias(prev => {
-                          const updated = [...prev, newEv];
-                          const baseId = inspectionId.replace('_PRODUCTO', '');
-                          (async () => {
-                            const cached = await offlineEngine.getExpediente(baseId) || {};
-                            await offlineEngine.saveExpediente(baseId, { ...cached, evidencias: updated });
-                          })();
-                          return updated;
-                        });
-                      };
-                      reader.readAsDataURL(file);
-                    }}
-                    className="text-xs text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer"
-                  />
+                  <div className="flex flex-wrap gap-2">
+                    <input
+                      id={`camara-${pregunta.id}`}
+                      type="file"
+                      accept="image/*"
+                      capture="environment"
+                      onChange={(e) => handleImageUpload(e, pregunta.id, pregunta.numero)}
+                      className="hidden"
+                    />
+                    <input
+                      id={`galeria-${pregunta.id}`}
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => handleImageUpload(e, pregunta.id, pregunta.numero)}
+                      className="hidden"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => document.getElementById(`camara-${pregunta.id}`)?.click()}
+                      className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
+                    >
+                      📸 Cámara
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => document.getElementById(`galeria-${pregunta.id}`)?.click()}
+                      className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
+                    >
+                      📁 Galería
+                    </button>
+                  </div>
                 </div>
               </div>
             );

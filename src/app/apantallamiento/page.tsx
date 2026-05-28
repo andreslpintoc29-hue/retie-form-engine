@@ -15,6 +15,7 @@ import { pdfEngine } from '@/engines/pdf/pdfEngine';
 import { complianceRulesEngine, type ComplianceRuleResult, type GeneratedNoConformity } from '@/engines/compliance/complianceRules';
 import { RETIE_APANTALLAMIENTO_SCHEMA } from '@/schemas/retie/apantallamiento';
 import type { RETIEMasterSchema } from '@/schemas/masterSchema';
+import { processEvidenceImage } from '@/utils/evidenceImageProcessor';
 
 const SCHEMA = RETIE_APANTALLAMIENTO_SCHEMA as RETIEMasterSchema;
 
@@ -211,6 +212,41 @@ export default function apantallamientoInspectorPage() {
     return formEngine.getValue(fieldId) as any;
   }, [formEngine]);
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, questionId: string, questionLabel: string) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const baseId = inspectionId.replace('_APANTALLAMIENTO', '');
+      const newEvidence = await processEvidenceImage({
+        file,
+        inspectionId: baseId,
+        formId: 'APANTALLAMIENTO',
+        questionId: questionId,
+        caption: `Evidencia para ${questionLabel}`
+      });
+
+      setEvidencias(prev => {
+        const updated = [...prev, newEvidence];
+        evidenciasRef.current = updated;
+        (async () => {
+          try {
+            const cached = await offlineEngine.getExpediente(baseId) || {};
+            await offlineEngine.saveExpediente(baseId, { ...cached, evidencias: updated });
+          } catch (err) {
+            console.error("Error saving IndexedDB:", err);
+          }
+        })();
+        return updated;
+      });
+    } catch (err) {
+      console.error("Error processing evidence image:", err);
+      alert("Error al procesar la imagen.");
+    } finally {
+      e.target.value = '';
+    }
+  };
+
   const sheets = SCHEMA.sheets || [SCHEMA];
   const currentSheet = sheets[activeSheet];
   const currentSectionData = currentSheet?.secciones?.[activeSection] || currentSheet?.sections?.[activeSection];
@@ -373,76 +409,36 @@ export default function apantallamientoInspectorPage() {
             </div>
           )}
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap gap-2">
             <input 
+              id={`camara-${field.id}`}
               type="file"
               accept="image/*"
-              onChange={async (e) => {
-                const file = e.target.files?.[0];
-                if (!file) return;
-
-                const reader = new FileReader();
-                reader.onload = async (event) => {
-                  const dataUrl = event.target?.result as string;
-                  console.log("=== FILE UPLOAD DIAGNOSTIC ===");
-                  console.log("- file:", file.name);
-                  console.log("- dataUrl prefix:", dataUrl.slice(0, 50));
-                  console.log("- dataUrl length:", dataUrl.length);
-                  console.log("- dataUrl starts with data:image:", dataUrl.startsWith('data:image/'));
-
-                  const newEvidence = {
-                    id: `ev-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-                    inspectionId: inspectionId.replace('_APANTALLAMIENTO', ''),
-                    formId: 'APANTALLAMIENTO',
-                    questionId: String(field.id),
-                    fileName: file.name,
-                    mimeType: file.type,
-                    dataUrl,
-                    foto: dataUrl,
-                    caption: `Evidencia para ${field.pregunta || field.label}`,
-                    comentario: `Evidencia para ${field.pregunta || field.label}`,
-                    createdAt: new Date().toISOString()
-                  };
-
-                  console.log("=== CREATING NEW EVIDENCE ===");
-                  console.log("newEvidence:", JSON.stringify(newEvidence, null, 2));
-                  
-                  // Usar función callback de setEvidencias para garantizar latest state
-                  setEvidencias(prev => {
-                    const updated = [...prev, newEvidence];
-                    console.log("=== SET EVIDENCIAS CALLBACK ===");
-                    console.log("prev.length:", prev.length);
-                    console.log("updated.length:", updated.length);
-                    console.log("updated[0]:", JSON.stringify(updated[0], null, 2));
-                    
-                    // Actualizar ref también
-                    evidenciasRef.current = updated;
-                    console.log("evidenciasRef.current actualizado a:", updated.length);
-                    
-                    // Guardar en IndexedDB también
-                    const baseId = inspectionId.replace('_APANTALLAMIENTO', '');
-                    (async () => {
-                      try {
-                        const cached = await offlineEngine.getExpediente(baseId) || {};
-                        await offlineEngine.saveExpediente(baseId, {
-                          ...cached,
-                          evidencias: updated
-                        });
-                        console.log("- IndexedDB guardado con", updated.length, "evidencias");
-                      } catch (err) {
-                        console.error("- Error guardando IndexedDB:", err);
-                      }
-                    })();
-                    
-                    return updated;
-                  });
-                  
-                  console.log("- Evidencia lista para agregar al estado");
-                };
-                reader.readAsDataURL(file);
-              }}
-              className="text-xs text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700 cursor-pointer"
+              capture="environment"
+              onChange={(e) => handleImageUpload(e, String(field.id), field.pregunta || field.label)}
+              className="hidden"
             />
+            <input 
+              id={`galeria-${field.id}`}
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleImageUpload(e, String(field.id), field.pregunta || field.label)}
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={() => document.getElementById(`camara-${field.id}`)?.click()}
+              className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
+            >
+              📸 Cámara
+            </button>
+            <button
+              type="button"
+              onClick={() => document.getElementById(`galeria-${field.id}`)?.click()}
+              className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
+            >
+              📁 Galería
+            </button>
           </div>
         </div>
 

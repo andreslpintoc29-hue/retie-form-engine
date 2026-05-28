@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { offlineEngine } from '@/engines/offline/indexedDB';
 import { pdfEngine } from '@/engines/pdf/pdfEngine';
+import { processEvidenceImage } from '@/utils/evidenceImageProcessor';
 
 // Default mock values for premium wow effect
 const DEFAULT_ORGANISMO = {
@@ -104,6 +105,7 @@ export default function ExpedientePage() {
   const [noConformidades, setNoConformidades] = useState<any[]>(DEFAULT_NO_CONFORMIDADES);
   const [evidencias, setEvidencias] = useState<any[]>(DEFAULT_EVIDENCIAS);
   const [adjuntos, setAdjuntos] = useState<any[]>(DEFAULT_ADJUNTOS);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   // FASE 3.5 — Alcance y módulos
   const [alcanceRetie, setAlcanceRetie] = useState(DEFAULT_ALCANCE_RETIE);
@@ -867,12 +869,48 @@ export default function ExpedientePage() {
                   </div>
                   <div className="md:col-span-2">
                     <label className="block text-[10px] text-slate-400 mb-1">Archivo de Imagen</label>
-                    <input
-                      id="upload_file"
-                      type="file"
-                      accept="image/*"
-                      className="w-full text-xs text-slate-300 file:mr-3 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-slate-700 file:text-black hover:file:bg-slate-600 cursor-pointer"
-                    />
+                    <div className="flex flex-col gap-2">
+                      <div className="flex flex-wrap gap-2">
+                        <input
+                          id="upload_file_camera"
+                          type="file"
+                          accept="image/*"
+                          capture="environment"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) setSelectedFile(file);
+                          }}
+                          className="hidden"
+                        />
+                        <input
+                          id="upload_file_gallery"
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) setSelectedFile(file);
+                          }}
+                          className="hidden"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => document.getElementById('upload_file_camera')?.click()}
+                          className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
+                        >
+                          📸 Cámara
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => document.getElementById('upload_file_gallery')?.click()}
+                          className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-xs font-semibold flex items-center gap-1.5 transition-all shadow-sm active:scale-95"
+                        >
+                          📁 Galería
+                        </button>
+                      </div>
+                      <div className="text-[10px] text-slate-400 font-mono">
+                        {selectedFile ? `Seleccionado: ${selectedFile.name} (${(selectedFile.size / 1024).toFixed(1)} KB)` : 'Ningún archivo seleccionado'}
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <button
@@ -880,49 +918,53 @@ export default function ExpedientePage() {
                     const formEl = document.getElementById('upload_form_id') as HTMLSelectElement;
                     const questionEl = document.getElementById('upload_question_id') as HTMLInputElement;
                     const commentEl = document.getElementById('upload_comment') as HTMLInputElement;
-                    const fileEl = document.getElementById('upload_file') as HTMLInputElement;
 
                     const formKey = formEl.value;
                     const formLabel = MODULOS_RETIE.find(m => m.key === formKey)?.label || formKey;
                     const question = questionEl.value.trim();
                     const comment = commentEl.value.trim();
-                    const file = fileEl.files?.[0];
+                    const file = selectedFile;
 
                     if (!question || !comment || !file) {
                       alert('Por favor complete todos los campos y seleccione una imagen.');
                       return;
                     }
 
-                    const reader = new FileReader();
-                    reader.onload = async (e) => {
-                      const dataUrl = e.target?.result as string;
-                      const newEv = {
-                        id: `EV-${Date.now()}`,
+                    try {
+                      const newEv = await processEvidenceImage({
+                        file,
                         inspectionId,
                         formId: formKey,
-                        formularioAsociado: formLabel,
                         questionId: question,
+                        caption: `${formLabel} — ${question}: ${comment}`
+                      });
+
+                      // Compatibilidad garantizada
+                      const compatibleEv = {
+                        ...newEv,
+                        formularioAsociado: formLabel,
                         preguntaAsociada: question,
-                        fileName: file.name,
-                        mimeType: file.type,
-                        dataUrl: dataUrl,
-                        foto: dataUrl, // Duplicar para compatibilidad
                         comentario: comment,
-                        caption: `${formLabel} — ${question}: ${comment}`,
-                        createdAt: new Date().toISOString(),
-                        timestamp: new Date().toLocaleString()
+                        timestamp: newEv.timestamp || new Date().toLocaleString()
                       };
 
-                      const updatedEvidencias = [...evidencias, newEv];
+                      const updatedEvidencias = [...evidencias, compatibleEv];
                       setEvidencias(updatedEvidencias);
                       await handleSave({ evidencias: updatedEvidencias });
 
                       // Limpiar campos
                       questionEl.value = '';
                       commentEl.value = '';
-                      fileEl.value = '';
-                    };
-                    reader.readAsDataURL(file);
+                      setSelectedFile(null);
+                      
+                      const camInput = document.getElementById('upload_file_camera') as HTMLInputElement;
+                      const galInput = document.getElementById('upload_file_gallery') as HTMLInputElement;
+                      if (camInput) camInput.value = '';
+                      if (galInput) galInput.value = '';
+                    } catch (err) {
+                      console.error("Error processing global evidence image:", err);
+                      alert("Error al procesar la imagen.");
+                    }
                   }}
                   className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded text-xs font-semibold shadow-md transition-all"
                 >
@@ -936,10 +978,13 @@ export default function ExpedientePage() {
                       await offlineEngine.deleteExpediente(inspectionId);
                       const questionEl = document.getElementById('upload_question_id') as HTMLInputElement;
                       const commentEl = document.getElementById('upload_comment') as HTMLInputElement;
-                      const fileEl = document.getElementById('upload_file') as HTMLInputElement;
                       if (questionEl) questionEl.value = '';
                       if (commentEl) commentEl.value = '';
-                      if (fileEl) fileEl.value = '';
+                      setSelectedFile(null);
+                      const camInput = document.getElementById('upload_file_camera') as HTMLInputElement;
+                      const galInput = document.getElementById('upload_file_gallery') as HTMLInputElement;
+                      if (camInput) camInput.value = '';
+                      if (galInput) galInput.value = '';
                     }
                   }}
                   className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-semibold shadow-md transition-all"

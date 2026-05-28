@@ -14,6 +14,7 @@ import { pdfEngine } from '@/engines/pdf/pdfEngine';
 import { complianceRulesEngine, type ComplianceRuleResult, type GeneratedNoConformity } from '@/engines/compliance/complianceRules';
 import { RETIE_PISCINAS_SCHEMA } from '@/schemas/retie/piscinas';
 import type { RETIEMasterSchema } from '@/schemas/masterSchema';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_PISCINAS_SCHEMA as RETIEMasterSchema;
 
@@ -81,6 +82,29 @@ export default function PiscinasInspectorPage() {
   const [showPdfPreview, setShowPdfPreview] = useState(false);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
   const [syncLog, setSyncLog] = useState<string[]>([]);
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  const baseInspectionId = inspectionId.replace('_PISCINAS', '');
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences Piscinas:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences Piscinas:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -511,6 +535,14 @@ export default function PiscinasInspectorPage() {
                     {(currentSectionData.preguntas || currentSectionData.fields)?.map((field:any) => (
                       <div key={String(field.id)}>
                         {renderField(field)}
+                        <EvidenceUploader
+                          inspectionId={baseInspectionId}
+                          formId="PISCINAS"
+                          questionId={String(field.id)}
+                          caption={field.pregunta || field.label}
+                          evidencias={evidencias}
+                          onSaveEvidencias={handleSaveEvidencias}
+                        />
                       </div>
                     ))}
                   </div>

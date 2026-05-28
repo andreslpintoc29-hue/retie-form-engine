@@ -1,4 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
+import { useFormStateStore } from '@/engines/state/formStateEngine';
+import { offlineEngine } from '@/engines/offline/indexedDB';
+import { EvidenceUploader } from './EvidenceUploader';
 
 interface Column {
   field: string;
@@ -15,6 +18,40 @@ interface DynamicTableProps {
 
 export const DynamicTableRenderer: FC<DynamicTableProps> = ({ section, formEngine, sectionIndex }) => {
   const { getValue, setValue } = formEngine;
+
+  const metadata = useFormStateStore(state => state.metadata);
+  const rawInspectionId = metadata?.inspectionId || 'RETIE-DEMO-2026_R_SPT';
+  const match = rawInspectionId.match(/_(ACPSDEBCI|DISTRIBUCION|DISENO|CARPETA|UFR|UFIYC|R_SPT|R_AISLAMIENTO|ILUMINANCIA|IN|PISCINAS|ASCENSORES|PRODUCTO|APANTALLAMIENTO)$/);
+  const formId = match ? match[1] : 'R_SPT';
+  const baseId = rawInspectionId.replace(/_(ACPSDEBCI|DISTRIBUCION|DISENO|CARPETA|UFR|UFIYC|R_SPT|R_AISLAMIENTO|ILUMINANCIA|IN|PISCINAS|ASCENSORES|PRODUCTO|APANTALLAMIENTO)$/, '');
+
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseId);
+        if (cached && cached.evidencias) {
+          setEvidencias(cached.evidencias);
+        }
+      } catch (err) {
+        console.error("Error loading evidences in DynamicTableRenderer:", err);
+      }
+    }
+    loadEvidencias();
+  }, [baseId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseId) || {};
+      await offlineEngine.saveExpediente(baseId, { ...cached, evidencias: updated });
+    } catch (err) {
+      console.error("Error saving evidences in DynamicTableRenderer:", err);
+    }
+  };
 
   // Render a flat table
   if (section.tipo === 'dynamic-table') {

@@ -7,6 +7,8 @@ import { useFormEngine } from '@/core/useFormEngine';
 import { eventBus } from '@/core/integration/eventBus';
 import { RETIE_CARPETA_SCHEMA } from '@/schemas/retie/carpeta';
 import { downloadCarpetaPDF } from '@/utils/pdfGeneratorCarpeta';
+import { offlineEngine } from '@/engines/offline/indexedDB';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_CARPETA_SCHEMA as any;
 const OPCIONES_R1 = ['SI', 'NO', 'N/A'];
@@ -36,6 +38,27 @@ export default function CarpetaPage() {
   const router = useRouter();
   const baseInspectionId = inspectionId.replace(/_(ACPSDEBCI|DISTRIBUCION|DISENO|CARPETA|UFR|UFIYC)$/, '');
   const [lastSaved, setLastSaved] = useState<string | null>(null);
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences Carpeta:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences Carpeta:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -193,17 +216,29 @@ export default function CarpetaPage() {
               const cKey = `${item.id}__cierre`;
               const dKey = `${item.id}__digital`;
               return (
-                <div key={item.id} className={`grid px-4 py-3 gap-3 items-center hover:bg-slate-750 transition-colors ${missingDigital.some((m: any) => m.id === item.id) ? 'bg-red-900/30' : ''}`} style={{ gridTemplateColumns: '2rem 1fr 5rem 7rem 5rem' }}>
-                  <span className="text-[11px] font-mono text-slate-500">{item.numero}</span>
-                  <p className="text-xs text-slate-200 leading-snug pr-2">{item.descripcion}</p>
-                  <div className="flex gap-1 justify-center">
-                    {item.archivo_digital ? OPCIONES_DIGITAL.map(opt => <RadioBtn key={opt} fieldKey={dKey} opt={opt} palette={{ SI: 'bg-blue-600 border-blue-500 text-white', NO: 'bg-slate-600 border-slate-500 text-white' }} />) : <span className="text-[10px] text-slate-600">-</span>}
+                <div key={item.id} className={`px-4 py-3 hover:bg-slate-750 transition-colors ${missingDigital.some((m: any) => m.id === item.id) ? 'bg-red-900/30' : ''}`}>
+                  <div className="grid gap-3 items-center" style={{ gridTemplateColumns: '2rem 1fr 5rem 7rem 5rem' }}>
+                    <span className="text-[11px] font-mono text-slate-500">{item.numero}</span>
+                    <p className="text-xs text-slate-200 leading-snug pr-2">{item.descripcion}</p>
+                    <div className="flex gap-1 justify-center">
+                      {item.archivo_digital ? OPCIONES_DIGITAL.map(opt => <RadioBtn key={opt} fieldKey={dKey} opt={opt} palette={{ SI: 'bg-blue-600 border-blue-500 text-white', NO: 'bg-slate-600 border-slate-500 text-white' }} />) : <span className="text-[10px] text-slate-600">-</span>}
+                    </div>
+                    <div className="flex gap-1 justify-center flex-wrap">
+                      {OPCIONES_R1.map(opt => <RadioBtn key={opt} fieldKey={v1Key} opt={opt} palette={COLOR_V1} />)}
+                    </div>
+                    <div className="flex gap-1 justify-center">
+                      {OPCIONES_CIERRE.map(opt => <RadioBtn key={opt} fieldKey={cKey} opt={opt} palette={COLOR_CIERRE} />)}
+                    </div>
                   </div>
-                  <div className="flex gap-1 justify-center flex-wrap">
-                    {OPCIONES_R1.map(opt => <RadioBtn key={opt} fieldKey={v1Key} opt={opt} palette={COLOR_V1} />)}
-                  </div>
-                  <div className="flex gap-1 justify-center">
-                    {OPCIONES_CIERRE.map(opt => <RadioBtn key={opt} fieldKey={cKey} opt={opt} palette={COLOR_CIERRE} />)}
+                  <div className="ml-8">
+                    <EvidenceUploader
+                      inspectionId={baseInspectionId}
+                      formId="CARPETA"
+                      questionId={item.id}
+                      caption={item.descripcion}
+                      evidencias={evidencias}
+                      onSaveEvidencias={handleSaveEvidencias}
+                    />
                   </div>
                 </div>
               );

@@ -7,6 +7,7 @@ import { eventBus } from '@/core/integration/eventBus';
 import { offlineEngine } from '@/engines/offline/indexedDB';
 import { RETIE_IN_SCHEMA } from '@/schemas/retie/in';
 import { downloadINPDF } from '@/utils/pdfGeneratorIN';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_IN_SCHEMA as any;
 const OPCIONES = ['SI', 'NO', 'N.A'];
@@ -29,6 +30,29 @@ export default function InPage() {
   const [showFinalizar, setShowFinalizar] = useState(false);
   const [showLimpiar, setShowLimpiar] = useState(false);
   const [activeSection, setActiveSection] = useState('contexto');
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  const baseInspectionId = inspectionId.replace(/_IN$/, '');
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences IN:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences IN:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -444,6 +468,28 @@ export default function InPage() {
                 })}
               </tbody>
             </table>
+          </div>
+        </section>
+
+        {/* ═════════════ EVIDENCIAS FOTOGRÁFICAS ═════════════ */}
+        <section id="section-evidencias" className="scroll-mt-36">
+          <div className="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden shadow-sm">
+            <div className="bg-gradient-to-r from-teal-950/60 to-slate-800 px-5 py-3 border-b border-slate-700">
+              <h3 className="text-sm font-bold text-teal-200 flex items-center gap-2">
+                📸 Evidencias Fotográficas del Servicio
+              </h3>
+              <p className="text-[10px] text-slate-400 mt-0.5">Adjunte fotos del trabajo realizado (cámara o galería).</p>
+            </div>
+            <div className="p-4">
+              <EvidenceUploader
+                inspectionId={baseInspectionId}
+                formId="IN"
+                questionId="evidencias_generales"
+                caption="Evidencias generales del servicio IN"
+                evidencias={evidencias}
+                onSaveEvidencias={handleSaveEvidencias}
+              />
+            </div>
           </div>
         </section>
 

@@ -13,6 +13,7 @@ import { offlineEngine } from '@/engines/offline/indexedDB';
 import { eventBus } from '@/core/integration/eventBus';
 import { RETIE_DISENO_SCHEMA } from '@/schemas/retie/diseno';
 import { downloadDisenoPDF } from '@/utils/pdfGeneratorDiseno';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_DISENO_SCHEMA as any;
 const OPCIONES_V1: (string)[] = ['SI', 'NO', 'N/A'];
@@ -55,6 +56,27 @@ export default function DisenoPage() {
   const [showPdfPreview, setShowPdfPreview] = useState(false);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
   const [showSaveToast, setShowSaveToast] = useState(false);
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences Diseno:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences Diseno:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -455,63 +477,74 @@ export default function DisenoPage() {
                   return (
                     <div
                       key={p.id}
-                      className={`grid px-5 py-3 gap-3 items-start transition-colors ${
+                      className={`px-5 py-3 transition-colors ${
                         isNO
                           ? 'bg-red-950/25 border-l-2 border-l-red-500'
                           : 'hover:bg-slate-700/40 border-l-2 border-l-transparent'
                       }`}
-                      style={{ gridTemplateColumns: '2rem 1fr 5.5rem 6.5rem 4.5rem' }}
                     >
-                      {/* Number */}
-                      <span className="text-[11px] font-mono text-slate-500 mt-0.5">{p.numero}</span>
+                      <div className="grid gap-3 items-start" style={{ gridTemplateColumns: '2rem 1fr 5.5rem 6.5rem 4.5rem' }}>
+                        {/* Number */}
+                        <span className="text-[11px] font-mono text-slate-500 mt-0.5">{p.numero}</span>
 
-                      {/* Question */}
-                      <div>
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <p className="text-sm text-slate-200 leading-snug">{p.pregunta}</p>
+                        {/* Question */}
+                        <div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <p className="text-sm text-slate-200 leading-snug">{p.pregunta}</p>
+                            {isNO && (
+                              <button
+                                onClick={() => handleOpenNCModal(p.id, p.pregunta, p.numero)}
+                                className="shrink-0 px-1.5 py-0.5 bg-red-900/50 border border-red-700/50 text-[10px] font-bold text-red-300 rounded hover:bg-red-800/60 transition-colors"
+                              >
+                                ⚠️ NC
+                              </button>
+                            )}
+                          </div>
+                          {/* Norma ref */}
+                          <span className="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-cyan-400/80 rounded mt-1 inline-block border border-cyan-900/30">
+                            R. {p.norma}
+                          </span>
+
+                          {/* NO — expanded OC row */}
                           {isNO && (
-                            <button
-                              onClick={() => handleOpenNCModal(p.id, p.pregunta, p.numero)}
-                              className="shrink-0 px-1.5 py-0.5 bg-red-900/50 border border-red-700/50 text-[10px] font-bold text-red-300 rounded hover:bg-red-800/60 transition-colors"
-                            >
-                              ⚠️ NC
-                            </button>
+                            <div className="mt-2 space-y-2">
+                              <textarea
+                                rows={2}
+                                placeholder="Describa la observación de no conformidad (ítem {p.numero})..."
+                                value={getValue(`${v1Key}__obs`) ?? ''}
+                                onChange={(e) => setValue(`${v1Key}__obs`, e.target.value)}
+                                className="w-full bg-red-950/30 border border-red-800/40 text-red-200 text-xs rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none placeholder-red-500/40"
+                              />
+                            </div>
                           )}
                         </div>
-                        {/* Norma ref */}
-                        <span className="text-[9px] px-1.5 py-0.5 bg-slate-700/60 text-cyan-400/80 rounded mt-1 inline-block border border-cyan-900/30">
-                          R. {p.norma}
-                        </span>
 
-                        {/* NO — expanded OC row */}
-                        {isNO && (
-                          <div className="mt-2 space-y-2">
-                            <textarea
-                              rows={2}
-                              placeholder="Describa la observación de no conformidad (ítem {p.numero})..."
-                              value={getValue(`${v1Key}__obs`) ?? ''}
-                              onChange={(e) => setValue(`${v1Key}__obs`, e.target.value)}
-                              className="w-full bg-red-950/30 border border-red-800/40 text-red-200 text-xs rounded-lg px-3 py-2 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none placeholder-red-500/40"
-                            />
-                          </div>
-                        )}
+                        {/* Norma */}
+                        <span className="text-[10px] text-slate-500 text-center mt-0.5 self-center">{p.norma}</span>
+
+                        {/* Visita 1 */}
+                        <div className="flex gap-1 justify-center self-center">
+                          {OPCIONES_V1.map((opt) => (
+                            <RadioBtn key={opt} fieldKey={v1Key} opt={opt} palette={COLOR_V1} />
+                          ))}
+                        </div>
+
+                        {/* Cierre */}
+                        <div className="flex gap-1 justify-center self-center">
+                          {OPCIONES_CIERRE.map((opt) => (
+                            <RadioBtn key={opt} fieldKey={cKey} opt={opt} palette={COLOR_CIERRE} />
+                          ))}
+                        </div>
                       </div>
-
-                      {/* Norma */}
-                      <span className="text-[10px] text-slate-500 text-center mt-0.5 self-center">{p.norma}</span>
-
-                      {/* Visita 1 */}
-                      <div className="flex gap-1 justify-center self-center">
-                        {OPCIONES_V1.map((opt) => (
-                          <RadioBtn key={opt} fieldKey={v1Key} opt={opt} palette={COLOR_V1} />
-                        ))}
-                      </div>
-
-                      {/* Cierre */}
-                      <div className="flex gap-1 justify-center self-center">
-                        {OPCIONES_CIERRE.map((opt) => (
-                          <RadioBtn key={opt} fieldKey={cKey} opt={opt} palette={COLOR_CIERRE} />
-                        ))}
+                      <div className="ml-8 mt-1">
+                        <EvidenceUploader
+                          inspectionId={baseInspectionId}
+                          formId="DISENO"
+                          questionId={p.id}
+                          caption={p.pregunta}
+                          evidencias={evidencias}
+                          onSaveEvidencias={handleSaveEvidencias}
+                        />
                       </div>
                     </div>
                   );

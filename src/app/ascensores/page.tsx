@@ -14,6 +14,7 @@ import { pdfEngine } from '@/engines/pdf/pdfEngine';
 import { complianceRulesEngine, type ComplianceRuleResult, type GeneratedNoConformity } from '@/engines/compliance/complianceRules';
 import { RETIE_ASCENSORES_SCHEMA } from '@/schemas/retie/ascensores';
 import type { RETIEMasterSchema } from '@/schemas/masterSchema';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_ASCENSORES_SCHEMA as RETIEMasterSchema;
 
@@ -86,6 +87,29 @@ export default function AscensoresInspectorPage() {
   const [showPdfPreview, setShowPdfPreview] = useState(false);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
   const [syncLog, setSyncLog] = useState<string[]>([]);
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  const baseInspectionId = inspectionId.replace('_ASCENSORES', '');
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences Ascensores:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences Ascensores:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -518,6 +542,14 @@ export default function AscensoresInspectorPage() {
                     {(currentSectionData.preguntas || currentSectionData.fields)?.map((field:any) => (
                       <div key={String(field.id)}>
                         {renderField(field)}
+                        <EvidenceUploader
+                          inspectionId={baseInspectionId}
+                          formId="ASCENSORES"
+                          questionId={String(field.id)}
+                          caption={field.pregunta || field.label}
+                          evidencias={evidencias}
+                          onSaveEvidencias={handleSaveEvidencias}
+                        />
                       </div>
                     ))}
                   </div>

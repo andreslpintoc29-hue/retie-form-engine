@@ -7,6 +7,8 @@ import { useFormEngine } from '@/core/useFormEngine';
 import { eventBus } from '@/core/integration/eventBus';
 import { pdfEngine } from '@/engines/pdf/pdfEngine';
 import { RETIE_UFR_SCHEMA } from '@/schemas/retie/ufr';
+import { offlineEngine } from '@/engines/offline/indexedDB';
+import { EvidenceUploader } from '@/components/EvidenceUploader';
 
 const SCHEMA = RETIE_UFR_SCHEMA as any;
 const OPCIONES_V1 = ['SI', 'NO', 'N/A'];
@@ -82,6 +84,27 @@ export default function UfrPage() {
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [showPdfPreview, setShowPdfPreview] = useState(false);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
+  const [evidencias, setEvidencias] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function loadEvidencias() {
+      if (!baseInspectionId) return;
+      try {
+        const cached = await offlineEngine.getExpediente(baseInspectionId);
+        if (cached?.evidencias) setEvidencias(cached.evidencias);
+      } catch (err) { console.error('Error loading evidences UFR:', err); }
+    }
+    loadEvidencias();
+  }, [baseInspectionId]);
+
+  const handleSaveEvidencias = async (updated: any[]) => {
+    setEvidencias(updated);
+    if (!baseInspectionId) return;
+    try {
+      const cached = await offlineEngine.getExpediente(baseInspectionId) || {};
+      await offlineEngine.saveExpediente(baseInspectionId, { ...cached, evidencias: updated });
+    } catch (err) { console.error('Error saving evidences UFR:', err); }
+  };
 
   const formEngine = useFormEngine({
     inspectionId,
@@ -253,28 +276,38 @@ export default function UfrPage() {
                 const cKey = `${p.id}__cierre`;
                 const isNO = getValue(v1Key) === 'NO';
                 return (
-                  <div key={p.id}
-                    className={`grid px-5 py-3 gap-3 items-start transition-colors ${isNO ? 'bg-red-950/20' : 'hover:bg-slate-750'}`}
-                    style={{ gridTemplateColumns: '2rem 1fr 6rem 7rem 5rem' }}>
-                    <span className="text-[11px] font-mono text-slate-500 mt-0.5">{p.numero}</span>
-                    <div>
-                      <p className="text-sm text-slate-200 leading-snug">{p.pregunta}</p>
-                      {isNO && (
-                        <>
-                          <span className="text-[10px] text-red-400 mt-1 block">⚠️ No Conformidad</span>
-                          <textarea rows={2} placeholder="Observación..."
-                            value={getValue(`${v1Key}__obs`) ?? ''}
-                            onChange={(e) => setValue(`${v1Key}__obs`, e.target.value)}
-                            className="mt-1.5 w-full bg-red-950/20 border border-red-800/40 text-red-200 text-xs rounded-lg px-2 py-1 focus:outline-none resize-none" />
-                        </>
-                      )}
+                  <div key={p.id} className={`px-5 py-3 transition-colors ${isNO ? 'bg-red-950/20' : 'hover:bg-slate-750'}`}>
+                    <div className="grid gap-3 items-start" style={{ gridTemplateColumns: '2rem 1fr 6rem 7rem 5rem' }}>
+                      <span className="text-[11px] font-mono text-slate-500 mt-0.5">{p.numero}</span>
+                      <div>
+                        <p className="text-sm text-slate-200 leading-snug">{p.pregunta}</p>
+                        {isNO && (
+                          <>
+                            <span className="text-[10px] text-red-400 mt-1 block">⚠️ No Conformidad</span>
+                            <textarea rows={2} placeholder="Observación..."
+                              value={getValue(`${v1Key}__obs`) ?? ''}
+                              onChange={(e) => setValue(`${v1Key}__obs`, e.target.value)}
+                              className="mt-1.5 w-full bg-red-950/20 border border-red-800/40 text-red-200 text-xs rounded-lg px-2 py-1 focus:outline-none resize-none" />
+                          </>
+                        )}
+                      </div>
+                      <span className="text-[10px] text-slate-500 text-center mt-0.5">{p.norma}</span>
+                      <div className="flex gap-1 justify-center flex-wrap">
+                        {OPCIONES_V1.map(opt => <RadioBtn key={opt} fieldKey={v1Key} opt={opt} palette={COLOR_V1} />)}
+                      </div>
+                      <div className="flex gap-1 justify-center">
+                        {OPCIONES_CIERRE.map(opt => <RadioBtn key={opt} fieldKey={cKey} opt={opt} palette={COLOR_CIERRE} />)}
+                      </div>
                     </div>
-                    <span className="text-[10px] text-slate-500 text-center mt-0.5">{p.norma}</span>
-                    <div className="flex gap-1 justify-center flex-wrap">
-                      {OPCIONES_V1.map(opt => <RadioBtn key={opt} fieldKey={v1Key} opt={opt} palette={COLOR_V1} />)}
-                    </div>
-                    <div className="flex gap-1 justify-center">
-                      {OPCIONES_CIERRE.map(opt => <RadioBtn key={opt} fieldKey={cKey} opt={opt} palette={COLOR_CIERRE} />)}
+                    <div className="ml-8">
+                      <EvidenceUploader
+                        inspectionId={baseInspectionId}
+                        formId="UFR"
+                        questionId={p.id}
+                        caption={p.pregunta}
+                        evidencias={evidencias}
+                        onSaveEvidencias={handleSaveEvidencias}
+                      />
                     </div>
                   </div>
                 );
