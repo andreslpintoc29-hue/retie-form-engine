@@ -1,20 +1,26 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import React from "react";
 
-export const metadata: Metadata = {
-  title: "RETIE Form Engine",
-  description: "Motor dinámico de formularios para inspecciones RETIE",
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = {
+  title: "Retie Form Engine",
+  description: "Aplicación de gestión de formularios RETIE",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="es">
-      <body className="antialiased">
+      <body className={inter.className}>
         {children}
+        <footer style={{ textAlign: 'center', color: '#6b7280', fontSize: '0.875rem', padding: '1rem' }}>
+          Creado por el Ingeniero Andrés Pinto
+        </footer>
       </body>
     </html>
   );
