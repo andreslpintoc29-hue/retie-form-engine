@@ -27,7 +27,11 @@ export default function RSptPage() {
   const baseInspectionId = inspectionId.replace('_R_SPT', '');
 
   const [lastSaved, setLastSaved] = useState<string | null>(null);
-  const [offlineStatus, setOfflineStatus] = useState({ online: true, pending: 0, lastSync: '' });
+  const [offlineStatus, setOfflineStatus] = useState({
+    online: true,
+    pending: 0,
+    lastSync: ''
+  });
   const [evidencias, setEvidencias] = useState<any[]>([]);
 
   const formEngine = useFormEngine({
@@ -41,6 +45,7 @@ export default function RSptPage() {
 
   const { isReady, getValue, setValue } = formEngine;
 
+  // Cargar evidencias asociadas al expediente base
   useEffect(() => {
     async function loadEvidencias() {
       if (!baseInspectionId) return;
@@ -58,10 +63,12 @@ export default function RSptPage() {
     loadEvidencias();
   }, [baseInspectionId]);
 
+  // Estado offline
   useEffect(() => {
     const update = async () => {
       const status = offlineEngine.getStatus();
       const queueSize = await offlineEngine.getQueueSize();
+
       setOfflineStatus({
         online: status.isOnline,
         pending: queueSize,
@@ -71,9 +78,11 @@ export default function RSptPage() {
 
     update();
     const interval = setInterval(update, 2000);
+
     return () => clearInterval(interval);
   }, []);
 
+  // Evento autosave
   useEffect(() => {
     const unsub = eventBus.subscribe('AUTOSAVE_COMPLETED', () => {
       setLastSaved(new Date().toLocaleTimeString());
@@ -142,6 +151,11 @@ export default function RSptPage() {
                 {lastSaved ? `💾 ${lastSaved}` : '—'}
               </div>
 
+              <div className="hidden md:flex text-[10px] text-slate-500">
+                {offlineStatus.online ? '🟢 Online' : '🔴 Offline'}
+                {offlineStatus.pending > 0 ? ` · ${offlineStatus.pending} pendientes` : ''}
+              </div>
+
               <button
                 onClick={() => {
                   downloadRSptPDF({
@@ -190,7 +204,6 @@ export default function RSptPage() {
       </div>
 
       <div className="max-w-7xl mx-auto p-6 space-y-6">
-
         {/* Context Fields */}
         <div className="bg-slate-800 rounded-xl border border-slate-700 p-6">
           <h2 className="text-lg font-bold text-blue-400 mb-4 border-b border-slate-700 pb-2">
@@ -217,7 +230,6 @@ export default function RSptPage() {
 
         {/* Render sections */}
         {SCHEMA.secciones.map((sec: any, sIdx: number) => {
-
           if (sec.tipo === 'informativo_con_imagen') {
             return (
               <div
@@ -249,30 +261,42 @@ export default function RSptPage() {
                     💡 Diagrama del Método de Caída de Potencial (61.8%)
                   </span>
 
-                  <svg width="100%" height="180" viewBox="0 0 500 180" className="max-w-[420px] text-slate-350">
+                  <svg
+                    width="100%"
+                    height="180"
+                    viewBox="0 0 500 180"
+                    className="max-w-[420px] text-slate-350"
+                  >
                     <line x1="20" y1="120" x2="480" y2="120" stroke="#475569" strokeWidth="3" />
                     <path d="M 40,120 L 30,130 M 120,120 L 110,130 M 200,120 L 190,130 M 280,120 L 270,130 M 360,120 L 350,130 M 440,120 L 430,130" stroke="#334155" strokeWidth="1.5" />
                     <rect x="200" y="20" width="100" height="50" rx="6" fill="#1e293b" stroke="#3b82f6" strokeWidth="2" />
                     <text x="250" y="42" fill="#60a5fa" fontSize="10" fontWeight="bold" textAnchor="middle">TELURÓMETRO</text>
+
                     <circle cx="225" cy="55" r="3" fill="#ef4444" />
                     <circle cx="250" cy="55" r="3" fill="#eab308" />
                     <circle cx="275" cy="55" r="3" fill="#22c55e" />
+
                     <line x1="80" y1="100" x2="80" y2="150" stroke="#f59e0b" strokeWidth="4" />
                     <line x1="72" y1="100" x2="88" y2="100" stroke="#f59e0b" strokeWidth="2" />
                     <text x="80" y="165" fill="#f59e0b" fontSize="10" fontWeight="bold" textAnchor="middle">SPT (Bajo Prueba)</text>
+
                     <line x1="290" y1="110" x2="290" y2="145" stroke="#a855f7" strokeWidth="3" />
                     <line x1="284" y1="110" x2="296" y2="110" stroke="#a855f7" strokeWidth="2" />
                     <text x="290" y="160" fill="#c084fc" fontSize="9" fontWeight="bold" textAnchor="middle">Estaca P (Tensión)</text>
+
                     <line x1="420" y1="110" x2="420" y2="145" stroke="#ef4444" strokeWidth="3" />
                     <line x1="414" y1="110" x2="426" y2="110" stroke="#ef4444" strokeWidth="2" />
                     <text x="420" y="160" fill="#f87171" fontSize="9" fontWeight="bold" textAnchor="middle">Estaca C (Corriente)</text>
+
                     <path d="M 80,100 L 80,45 L 200,45" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 3" />
                     <path d="M 250,70 L 250,90 L 290,90 L 290,110" fill="none" stroke="#a855f7" strokeWidth="1.5" />
                     <path d="M 300,45 L 370,45 L 370,85 L 420,85 L 420,110" fill="none" stroke="#ef4444" strokeWidth="1.5" />
+
                     <line x1="80" y1="135" x2="290" y2="135" stroke="#c084fc" strokeWidth="1" />
                     <polygon points="80,135 85,132 85,138" fill="#c084fc" />
                     <polygon points="290,135 285,132 285,138" fill="#c084fc" />
                     <text x="185" y="147" fill="#c084fc" fontSize="9" fontWeight="semibold" textAnchor="middle">x = 61.8% · d</text>
+
                     <line x1="80" y1="10" x2="420" y2="10" stroke="#f87171" strokeWidth="1" />
                     <polygon points="80,10 85,7 85,13" fill="#f87171" />
                     <polygon points="420,10 415,7 415,13" fill="#f87171" />
@@ -289,18 +313,31 @@ export default function RSptPage() {
 
           if (sec.tipo === 'dynamic-table' || sec.tipo === 'dynamic-table-grouped') {
             return (
-              <DynamicTableRenderer
-                key={sIdx}
-                section={sec}
-                formEngine={formEngine}
-                sectionIndex={sIdx}
-              />
+              <div key={sIdx} className="space-y-3">
+                <DynamicTableRenderer
+                  section={sec}
+                  formEngine={formEngine}
+                  sectionIndex={sIdx}
+                />
+
+                <EvidenceUploader
+                  inspectionId={baseInspectionId}
+                  formId="R_SPT"
+                  questionId={sec.id || `section_${sIdx}`}
+                  caption={sec.titulo || 'Sección técnica R. SPT'}
+                  evidencias={evidencias}
+                  onSaveEvidencias={handleSaveEvidencias}
+                />
+              </div>
             );
           }
 
           if (sec.tipo === 'checklist') {
             return (
-              <div key={sIdx} className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-6">
+              <div
+                key={sIdx}
+                className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden mb-6"
+              >
                 <div className="bg-slate-900/50 border-b border-slate-700 p-4">
                   <h3 className="font-bold text-blue-400 text-lg">
                     {sec.titulo}
@@ -373,7 +410,10 @@ export default function RSptPage() {
             const value = getFieldValue(fieldId) ?? '';
 
             return (
-              <div key={sIdx} className="bg-slate-800 rounded-xl border border-slate-700 p-6">
+              <div
+                key={sIdx}
+                className="bg-slate-800 rounded-xl border border-slate-700 p-6"
+              >
                 <h3 className="font-bold text-blue-400 text-lg mb-4">
                   {sec.titulo}
                 </h3>
@@ -384,6 +424,17 @@ export default function RSptPage() {
                   placeholder="Escriba las observaciones aquí..."
                   className="w-full h-32 bg-slate-700 border border-slate-600 rounded-lg p-4 text-sm text-white focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors resize-y"
                 />
+
+                <div className="mt-3">
+                  <EvidenceUploader
+                    inspectionId={baseInspectionId}
+                    formId="R_SPT"
+                    questionId={fieldId}
+                    caption={sec.titulo || 'Observaciones R. SPT'}
+                    evidencias={evidencias}
+                    onSaveEvidencias={handleSaveEvidencias}
+                  />
+                </div>
               </div>
             );
           }
